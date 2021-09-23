@@ -138,16 +138,26 @@ const killarney = {
         [-114.12959468827377, 51.03780459079984],
         [-114.12371714702843, 51.03784613000478,],
 
-        [-114.09472267063069 + offset, 51.03781458725867+ offset],
-        [-114.06605539761398+ offset, 51.03781793732603+ offset],
-        [-114.06548890682399+ offset, 51.04560095291732+ offset],
-        [-114.0812599513191+ offset, 51.04605708217247+ offset],
-        [-114.08154153696147+ offset, 51.04194719189309+ offset],
-        [-114.09467317597523+ offset, 51.042302050146354+ offset],
+        [-114.09472267063069, 51.03781458725867],
+        [-114.06605539761398, 51.03781793732603],
+        [-114.06548890682399, 51.04560095291732],
+        [-114.0812599513191, 51.04605708217247],
+        [-114.08154153696147, 51.04194719189309],
+        [-114.09467317597523, 51.042302050146354],
 
         [-114.09470247087306, 51.037818907813254],
     ]
 }
+}
+
+function offsetRoute(route) {
+    return {
+        ...route,
+        geometry: {
+            ...route.geometry,
+            coordinates: route.geometry.coordinates.map(value => ([value[0] + offset, value[1] + offset]))
+        }
+    }
 }
 
 const routes = [
@@ -155,7 +165,7 @@ const routes = [
     { data: sunnysideRamsay, id:  'sunnyside-ramsay-route', color: 'yellow'},
     { data: riversideManchester, id: 'riverside-manchester-route', color: 'black'},
     { data: southCalgary, id: 'southcalgary-route', color: 'orange' },
-    {data: killarney, id: 'killarney-route', color: 'blue'}
+    {data: offsetRoute(killarney), id: 'killarney-route', color: 'blue'}
 ]
 
 const streetcars = {
