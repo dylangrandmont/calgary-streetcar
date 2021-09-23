@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Display a map on a webpage</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+      .marker {
+        background-image: url('./car.jpeg');
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoiZHlsYW5ncmFuZG1vbnQiLCJhIjoiY2t0eDV1cmdkMnBxbzJ3bzI5dm1wbHZ4MCJ9.19ogLLAZwVYbKNoy-E_S5Q'
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-114.06, 51.05],
+        zoom: 13
+      })
+
+      const hillhurstInglewood = {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'LineString',
+          coordinates: [
+            [-114.08592990014981, 51.05253712700806],
+            [-114.0947245349653, 51.052520631762604],
+            [-114.094731781486, 51.05709687083791],
+            [-114.08599386788937, 51.05712357695188],
+            [-114.08592962268268, 51.052539528758736],
+            [-114.08588112870886, 51.05215697343696],
+            [-114.08569923100222, 51.0518089710593],
+            [-114.08537300140469, 51.051535538778],
+            [-114.0837079102376, 51.0501243555334],
+            [-114.08371198530921, 51.04614785036494],
+            [-114.04834008539397, 51.04513188716467],
+            [-114.0483529394385, 51.04411080434035],
+            [-114.04317766836698, 51.04372702045797],
+            [-114.0372805028625, 51.0422846914819],
+            [-114.03682431075224, 51.04219493204588],
+            [-114.01802378219071, 51.03451108917668],
+            [-114.01917322421849, 51.03349617324513],
+            [-114.01918637603683, 51.02713982395138]
+          ]
+        }
+      }
+
+      const sunnysideRamsay = {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'LineString',
+          coordinates: [
+            [-114.07438791506914, 51.059249914924834],
+            [-114.07439302541748, 51.058954415693634],
+            [-114.07397908720161, 51.05894718878665],
+            [-114.0738134921497, 51.059023623559156],
+            [-114.07378617155163, 51.059099756583784],
+            [-114.07391265267314, 51.05922502239929],
+            [-114.07395225787279, 51.0592523238782],
+            [-114.07598880340164, 51.05926055903463],
+            [-114.07619997133722, 51.059205465868125],
+            [-114.08450858528214, 51.05419424511214],
+            [-114.08593936152991, 51.054067658980074],
+            [-114.08593093455498, 51.05254113041264],
+            [-114.08577077297342, 51.051922371373465],
+            [-114.08369765853143, 51.05011674810018],
+            [-114.07157412631952, 51.049578034093955],
+            [-114.07148474434986, 51.045764491004334],
+            [-114.05813966180291, 51.04537576453928],
+            [-114.05844021989171, 51.04127328181791],
+            [-114.04684772767578, 51.04094865694908],
+            [-114.04503824021275, 51.04147175374527],
+            [-114.04402950308892, 51.041157896379644],
+            [-114.04194443293214, 51.04122328349537],
+            [-114.04119794256063, 51.036274899551046],
+            [-114.03680515732096, 51.03620362085858],
+            [-114.03678306341874, 51.03456621220615],
+            [-114.04279105525517, 51.03463817661564],
+            [-114.04119794256063, 51.036274899551046]
+          ]
+        }
+      }
+
+      const streetcars = {
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: hillhurstInglewood.geometry.coordinates[0]
+            }
+          },
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: sunnysideRamsay.geometry.coordinates[0]
+            }
+          }
+        ]
+      }
+
+      const markers = streetcars.features.map(({ geometry }) => {
+        // create a HTML element for each feature
+        const el = document.createElement('div')
+        el.className = 'marker'
+
+        // make a marker for each feature and add to the map
+        const marker = new mapboxgl.Marker(el).setLngLat(geometry.coordinates)
+        marker.addTo(map);
+        return marker;
+      })
+
+      function animateRoute(coordinates, marker) {
+        let trainIndex = 0
+        let trainCorodinate = coordinates[trainIndex]
+
+        const speed = 0.000002
+
+        function animateMarker(timestamp) {
+          const radius = 20
+          const nextPoint = coordinates[(trainIndex + 1) % coordinates.length]
+          const lastPoint = coordinates[trainIndex % coordinates.length]
+          const distanceBetweenPoints = Math.sqrt((nextPoint[0] - lastPoint[0]) ** 2 + (nextPoint[1] - lastPoint[1]) ** 2)
+          const distanceInTimeInterval = speed * 1
+          const distanceToNextPoint = Math.sqrt((nextPoint[0] - trainCorodinate[0]) ** 2 + (nextPoint[1] - trainCorodinate[1]) ** 2)
+
+          if (distanceInTimeInterval > distanceToNextPoint) {
+            trainCorodinate = nextPoint
+            trainIndex++
+          } else {
+            const newX = (distanceInTimeInterval / distanceBetweenPoints) * (nextPoint[0] - lastPoint[0]) + trainCorodinate[0]
+            const newY = (distanceInTimeInterval / distanceBetweenPoints) * (nextPoint[1] - lastPoint[1]) + trainCorodinate[1]
+            trainCorodinate = [newX, newY]
+          }
+
+          marker.setLngLat(trainCorodinate)
+          marker.addTo(map)
+          requestAnimationFrame(animateMarker)
+        }
+        requestAnimationFrame(animateMarker)
+      }
+
+      animateRoute(hillhurstInglewood.geometry.coordinates, markers[0])
+      animateRoute(sunnysideRamsay.geometry.coordinates, markers[1])
+
+      map.on('load', () => {
+        map.addSource('hillhurst-inglewood-route', {
+          type: 'geojson',
+          data: hillhurstInglewood
+        })
+        map.addSource('sunnyside-ramsay-route', {
+          type: 'geojson',
+          data: sunnysideRamsay
+        })
+
+        map.addLayer({
+          id: 'hillhurst-inglewood-route',
+          type: 'line',
+          source: 'hillhurst-inglewood-route',
+          layout: {
+            'line-join': 'round',
+            'line-cap': 'round'
+          },
+          paint: {
+            'line-color': 'red',
+            'line-width': 8
+          }
+        })
+        map.addLayer({
+          id: 'sunnyside-ramsay-route',
+          type: 'line',
+          source: 'sunnyside-ramsay-route',
+          layout: {
+            'line-join': 'round',
+            'line-cap': 'round'
+          },
+          paint: {
+            'line-color': 'yellow',
+            'line-width': 8
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

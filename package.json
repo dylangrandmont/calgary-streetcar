@@ -1,0 +1,18 @@
+{
+  "name": "calgary streetcar",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "run": "ws"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dylangrandmont/calgary-streetcar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "local-web-server": "^2.6.1"
+  }
+}
+
