@@ -22,6 +22,10 @@ const intersections = {
         '7 St NW': [-114.07893964039631, 51.07054169892371],
         'Center St': [-114.06257393380261, 51.070609731750714],
     },
+    '16 Av N': {
+        '10 St NW': [-114.08489350460921, 51.066904001348],
+        'Edmonton Trail': [-114.05618395994925, 51.06693626186497],
+    },
     '8 Av N': {
         '14 St NW': [-114.09475415944235, 51.0574984522886],
     },
@@ -186,8 +190,8 @@ const killarney = route([
 ])
 
 const crescentHeights = route([
-  [-114.08489350460921, 51.066904001348],
-  [-114.05618395994925, 51.06693626186497],
+  intersections['16 Av N']['10 St NW'],
+  intersections['16 Av N']['Edmonton Trail'],
   [-114.05624889447328, 51.064177528209555],
   [-114.05617332900455, 51.06366447705205],
   [-114.055130964576, 51.060773093744004],
@@ -242,7 +246,7 @@ const tuxedoPark = route([
   [-114.06249866849501, 51.07331231657526],
   [-114.05634463964452, 51.07333567547062],
   [-114.05610152100759, 51.07065978671271],
-  [-114.05615823010335, 51.06693921294275],
+  intersections['16 Av N']['Edmonton Trail'],
   [-114.06257210372549, 51.06691570029229],
   [-114.06249866849501, 51.07331231657526],
   [-114.06257393380261, 51.070609731750714],
@@ -308,7 +312,7 @@ const ogden = route([
 const capitolHill = route([
   [-114.09721714004105, 51.0705377462257],
   [-114.0849017998016, 51.07053755601367],
-  [-114.08488137374083, 51.06690311542869]
+  intersections['16 Av N']['10 St NW'],
 ])
 
 const grandTrunk = route([
@@ -404,9 +408,10 @@ const streetcars = {
   }))
 }
 
-const markers = streetcars.features.map(({ geometry }) => {
+const markers = streetcars.features.map(({ geometry }, index) => {
   const el = document.createElement('div')
   el.className = 'marker'
+  el.style.color = routes[index].color;
 
   return new mapboxgl.Marker(el).setLngLat(geometry.coordinates).addTo(map)
 })
