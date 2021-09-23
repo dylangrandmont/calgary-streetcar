@@ -103,6 +103,37 @@
         }
       }
 
+      const riversideManchester = {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'LineString',
+          coordinates: [
+            [-114.03245254193595, 51.0532361007371],
+            [-114.05027216576363, 51.05327391988086],
+            [-114.05037125129785, 51.050621738210474],
+            [-114.05154533464692, 51.04891295247008],
+            [-114.05294643069912, 51.04800145363462],
+            [-114.0530456818646, 51.04758695979581],
+            [-114.05320870960337, 51.04526820411377],
+            [-114.0655038121198, 51.04559945726983],
+            [-114.06580161010373, 51.041488891337764],
+            [-114.05843117123706, 51.041277794230425],
+            [-114.05891505161102, 51.0350793399651],
+            [-114.05947295099163, 51.03361864160707],
+            [-114.05956748319745, 51.028709978619666],
+            [-114.0593027589476, 51.027660134295886],
+            [-114.05892634373404, 51.02510608380651],
+            [-114.05932343005291, 51.023279104890236],
+            [-114.06782981960919, 51.008736940208166],
+            [-114.06791129417206, 51.00860654344027],
+            [-114.06779864140104, 51.00859304219302],
+            [-114.06771817513604, 51.008680800229925],
+            [-114.06776913710388, 51.008873192268275],
+            ]
+        }
+      }
+
       const streetcars = {
         type: 'FeatureCollection',
         features: [
@@ -118,6 +149,13 @@
             geometry: {
               type: 'Point',
               coordinates: sunnysideRamsay.geometry.coordinates[0]
+            }
+          },
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: riversideManchester.geometry.coordinates[0]
             }
           }
         ]
@@ -166,6 +204,7 @@
 
       animateRoute(hillhurstInglewood.geometry.coordinates, markers[0])
       animateRoute(sunnysideRamsay.geometry.coordinates, markers[1])
+      animateRoute(riversideManchester.geometry.coordinates, markers[2])
 
       map.on('load', () => {
         map.addSource('hillhurst-inglewood-route', {
@@ -175,6 +214,10 @@
         map.addSource('sunnyside-ramsay-route', {
           type: 'geojson',
           data: sunnysideRamsay
+        })
+        map.addSource('riverside-manchester-route', {
+          type: 'geojson',
+          data: riversideManchester
         })
 
         map.addLayer({
@@ -200,6 +243,19 @@
           },
           paint: {
             'line-color': 'yellow',
+            'line-width': 8
+          }
+        })
+        map.addLayer({
+          id: 'riverside-manchester-route',
+          type: 'line',
+          source: 'riverside-manchester-route',
+          layout: {
+            'line-join': 'round',
+            'line-cap': 'round'
+          },
+          paint: {
+            'line-color': 'black',
             'line-width': 8
           }
         })
