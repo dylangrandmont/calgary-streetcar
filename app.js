@@ -102,31 +102,44 @@ const riversideManchester = {
   }
 }
 
+const southCalgary = {
+  type: 'Feature',
+  properties: {},
+  geometry: {
+    type: 'LineString',
+    coordinates: [
+      [-114.09474547223127, 51.0304330356334],
+      [-114.10944297855941, 51.030420176040515],
+      [-114.10930326307387, 51.02316898218637],
+      [-114.09472699485453, 51.0232217172826],
+      [-114.09474547223127, 51.0304330356334],
+      [-114.09472267063069, 51.03781458725867],
+      [-114.06605539761398, 51.03781793732603],
+      [-114.06548890682399, 51.04560095291732],
+      [-114.0812599513191, 51.04605708217247],
+      [-114.08154153696147, 51.04194719189309],
+      [-114.09467317597523, 51.042302050146354],
+      [-114.09472267063069, 51.03781458725867]
+    ]
+  }
+}
+
+const routes = [
+    { data: hillhurstInglewood, id: 'hillhurst-inglewood-route', color: 'red'},
+    { data: sunnysideRamsay, id:  'sunnyside-ramsay-route', color: 'yellow'},
+    { data: riversideManchester, id: 'riverside-manchester-route', color: 'black'},
+    { data: southCalgary, id: 'southcalgary-route', color: 'orange' }
+]
+
 const streetcars = {
   type: 'FeatureCollection',
-  features: [
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: hillhurstInglewood.geometry.coordinates[0]
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: sunnysideRamsay.geometry.coordinates[0]
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: riversideManchester.geometry.coordinates[0]
-      }
+  features: routes.map(({ data }) => ({
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: data.geometry.coordinates[0]
     }
-  ]
+  }))
 }
 
 const markers = streetcars.features.map(({ geometry }) => {
@@ -165,9 +178,9 @@ function animateRoute(coordinates, marker) {
   requestAnimationFrame(animateMarker)
 }
 
-animateRoute(hillhurstInglewood.geometry.coordinates, markers[0])
-animateRoute(sunnysideRamsay.geometry.coordinates, markers[1])
-animateRoute(riversideManchester.geometry.coordinates, markers[2])
+routes.forEach(({data}, index) => {
+    animateRoute(data.geometry.coordinates, markers[index])
+})
 
 function addRouteToMap(id, data, color) {
   map.addSource(id, {
@@ -190,7 +203,7 @@ function addRouteToMap(id, data, color) {
 }
 
 map.on('load', () => {
-  addRouteToMap('hillhurst-inglewood-route', hillhurstInglewood, 'red')
-  addRouteToMap('sunnyside-ramsay-route', sunnysideRamsay, 'yellow')
-  addRouteToMap('riverside-manchester-route', riversideManchester, 'black')
+    routes.forEach(({data, id, color}) => {
+        addRouteToMap(id, data, color)
+    })
 })
