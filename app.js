@@ -124,11 +124,38 @@ const southCalgary = {
   }
 }
 
+const offset = 1e-4;
+
+const killarney = {
+    type: 'Feature',
+    properties: {},
+    geometry: {
+      type: 'LineString',
+    coordinates: [
+        [-114.12371714702843, 51.03784613000478],
+        [-114.1237226937469, 51.033190262669265],
+        [-114.12956914789937, 51.033161877914324],
+        [-114.12959468827377, 51.03780459079984],
+        [-114.12371714702843, 51.03784613000478,],
+
+        [-114.09472267063069 + offset, 51.03781458725867+ offset],
+        [-114.06605539761398+ offset, 51.03781793732603+ offset],
+        [-114.06548890682399+ offset, 51.04560095291732+ offset],
+        [-114.0812599513191+ offset, 51.04605708217247+ offset],
+        [-114.08154153696147+ offset, 51.04194719189309+ offset],
+        [-114.09467317597523+ offset, 51.042302050146354+ offset],
+
+        [-114.09470247087306, 51.037818907813254],
+    ]
+}
+}
+
 const routes = [
     { data: hillhurstInglewood, id: 'hillhurst-inglewood-route', color: 'red'},
     { data: sunnysideRamsay, id:  'sunnyside-ramsay-route', color: 'yellow'},
     { data: riversideManchester, id: 'riverside-manchester-route', color: 'black'},
-    { data: southCalgary, id: 'southcalgary-route', color: 'orange' }
+    { data: southCalgary, id: 'southcalgary-route', color: 'orange' },
+    {data: killarney, id: 'killarney-route', color: 'blue'}
 ]
 
 const streetcars = {
