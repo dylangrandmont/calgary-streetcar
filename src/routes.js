@@ -16,14 +16,12 @@ const hillhurstInglewood = route([
   intersections['Kensington Rd']['14 St NW'],
   intersections['5 Av N']['14 St NW'],
   intersections['5 Av N']['10 St NW'],
-  [-114.08592962268268, 51.052539528758736],
-  [-114.08588112870886, 51.05215697343696],
-  [-114.08569923100222, 51.0518089710593],
-  [-114.08537300140469, 51.051535538778],
-  [-114.0837079102376, 51.0501243555334],
-  [-114.08371198530921, 51.04614785036494],
-  [-114.04834008539397, 51.04513188716467],
-  [-114.0483529394385, 51.04411080434035],
+  intersections['Kensington Rd']['10 St NW'],
+  intersections['Memorial Dr']['10 St NW'],
+  intersections['4 Av S']['9 St SW'],
+  intersections['8 Av S']['9 St SW'],
+  intersections['8 Av S']['6 St SE'],
+  intersections['9 Av S']['6 St E'],
   [-114.04317766836698, 51.04372702045797],
   [-114.0372805028625, 51.0422846914819],
   [-114.03682431075224, 51.04219493204588],
@@ -236,8 +234,9 @@ const ogden = route([
   [-114.03682431075224, 51.04219493204588],
   [-114.0372805028625, 51.0422846914819],
   [-114.04317766836698, 51.04372702045797],
-  [-114.0483529394385, 51.04411080434035],
-  [-114.04834008539397, 51.04513188716467]
+  intersections['9 Av S']['6 St E'],
+  intersections['8 Av S']['6 St SE'],
+  intersections['8 Av S']['Center St']
 ])
 
 const capitolHill = route([
@@ -257,11 +256,27 @@ const grandTrunk = route([
   [-114.09474606923256, 51.05970225119184],
   intersections['8 Av N']['14 St NW'],
   intersections['Kensington Rd']['14 St NW'],
+  intersections['Kensington Rd']['10 St NW'],
+  intersections['4 Av S']['9 St SW'],
+  intersections['8 Av S']['9 St SW'],
+  intersections['8 Av S']['Center St'],
+  intersections['8 Av S']['9 St SW'],
+  intersections['4 Av S']['9 St SW'],
+  intersections['Kensington Rd']['10 St NW'],
+  intersections['Kensington Rd']['14 St NW'],
   intersections['Kensington Rd']['24 St NW'],
   intersections['7 Av N']['24 St NW']
 ])
 
 const bowness = route([
+  intersections['Kensington Rd']['14 St NW'],
+  intersections['Kensington Rd']['10 St NW'],
+  intersections['4 Av S']['9 St SW'],
+  intersections['8 Av S']['9 St SW'],
+  intersections['8 Av S']['Center St'],
+  intersections['8 Av S']['9 St SW'],
+  intersections['4 Av S']['9 St SW'],
+  intersections['Kensington Rd']['10 St NW'],
   intersections['Kensington Rd']['14 St NW'],
   [-114.11796612252739, 51.052485028711544],
   [-114.12133858712923, 51.05248009534121],
@@ -302,6 +317,13 @@ const beltline = route([
   intersections['8 Av S']['1 St SW']
 ])
 
+const sunalta = route([
+  intersections['12 Av S']['18 St SW'],
+  intersections['12 Av S']['2 St SE'],
+  intersections['8 Av S']['2 St SE'],
+  intersections['8 Av S']['Center St'],
+])
+
 function offsetRoute(route) {
   return {
     ...route,
@@ -321,9 +343,10 @@ export const routes = [
   { data: offsetRoute(crescentHeights), id: 'crescent-height-route', color: '#00aaef', name: 'No. 4 Crescent Heights' },
   { data: mountPleasant, id: 'mount-pleasant-route', color: '#e82326', name: 'No. 2 Mount Pleasant' },
   { data: offsetRoute(tuxedoPark), id: 'tuxedo-park-route', color: '#4a4ca5', name: 'No. 3 Tuxedo Park' },
-  { data: ogden, id: 'ogden-route', color: '#835A39', name: '' },
-  { data: capitolHill, id: 'capitol-hill-route', color: '#b20168', name: 'No. C Capitol Hill' },
-  { data: grandTrunk, id: 'grand-trunk-route', color: '#74cabe', name: 'No. A Grand Trunk' },
-  { data: bowness, id: 'bowness-route', color: '#b6449f', name: 'No. B Bowness' },
-  { data: offsetRoute(offsetRoute(beltline)), id: 'beltline-route', color: '#3aba72', name: 'No. 5 Beltline' }
+  { data: offsetRoute(ogden), id: 'ogden-route', color: '#835A39', name: '' },
+  { data: capitolHill, id: 'capitol-hill-route', color: '#b20168', name: 'No. C Capitol Hill - Rosedale' },
+  { data: offsetRoute(grandTrunk), id: 'grand-trunk-route', color: '#74cabe', name: 'No. A Grand Trunk' },
+  { data: offsetRoute(offsetRoute(bowness)), id: 'bowness-route', color: '#b6449f', name: 'No. B Bowness' },
+  { data: offsetRoute(offsetRoute(beltline)), id: 'beltline-route', color: '#3aba72', name: 'No. 5 Beltline' },
+  { data: sunalta, id: 'sunalta-route', color: '#d7e34d', name: 'No. S Sunalta'}
 ]

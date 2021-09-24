@@ -30,3 +30,6 @@ The site is available on the github page associated with this repository
 ## Credits
 
 [The experiment by Saadiq Mohiuddin](https://saadiqm.com/2019/04/13/calgary-historic-streetcar-map.html) served as the inspiration for this visualization.
+
+Other resources:
+* http://www.tundria.com/trams/CAN/Calgary-1945.shtml
