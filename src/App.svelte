@@ -1,6 +1,7 @@
 <script>
   import Controls from './Controls.svelte'
   import SelectedLine from './SelectedLine.svelte'
+  import WelcomePanel from './WelcomePanel.svelte'
   import { routes } from './routes'
 
   let speed = 0.000002
@@ -139,5 +140,7 @@
 	<Controls selectedId={selectedId} bind:speed />
 	{#if selectedId}
 	<SelectedLine selectedId={selectedId}/>
+	{:else}
+	<WelcomePanel />
 	{/if}
 </div>
