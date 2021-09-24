@@ -1,18 +1,12 @@
 <script>
-import { routes } from "./routes";
     export let speed;
     export let selectedId;
 </script>
 
 <style>
     .root {
-        z-index: 1;
-        position: absolute;
         background-color: white;
         padding: 16px 16px 0px;
-        top: 0px;
-        right: 0px;
-        margin: 8px;
         border-radius: 2px;
         border: 1px solid black
     }

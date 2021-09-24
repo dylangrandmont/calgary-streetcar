@@ -1,5 +1,6 @@
 <script>
-  import SidePanel from './SidePanel.svelte'
+  import Controls from './Controls.svelte'
+  import SelectedLine from './SelectedLine.svelte'
   import { routes } from './routes'
 
   let speed = 0.000002
@@ -134,4 +135,9 @@
   })
 </script>
 
-<SidePanel selectedId={selectedId} bind:speed />
+<div style="position: absolute; z-index: 1; top: 0px; right: 0px; padding: 8px; display: grid; grid-gap: 8px;">
+	<Controls selectedId={selectedId} bind:speed />
+	{#if selectedId}
+	<SelectedLine selectedId={selectedId}/>
+	{/if}
+</div>
