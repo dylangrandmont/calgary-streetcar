@@ -242,7 +242,9 @@ const ogden = route([
 const capitolHill = route([
   [-114.09721714004105, 51.0705377462257],
   [-114.0849017998016, 51.07053755601367],
-  intersections['16 Av N']['10 St NW']
+  intersections['16 Av N']['10 St NW'],
+  [-114.0849017998016, 51.07053755601367],
+  [-114.09721714004105, 51.0705377462257],
 ])
 
 const grandTrunk = route([
@@ -335,7 +337,7 @@ function offsetRoute(route) {
 }
 
 export const routes = [
-  { data: hillhurstInglewood, id: 'hillhurst-inglewood-route', color: '#e7067d', name: 'No. 1 E and W Calgary' },
+  { data: hillhurstInglewood, id: 'hillhurst-inglewood-route', color: '#e7067d', name: 'No. Hillhurst - E Calgary' },
   { data: sunnysideRamsay, id: 'sunnyside-ramsay-route', color: '#fee300', name: 'No. 8 Burns Avenue-Sunnyside' },
   { data: riversideManchester, id: 'riverside-manchester-route', color: 'black', name: 'No. 9 Manchester-Riverside' },
   { data: southCalgary, id: 'southcalgary-route', color: '#f29517', name: 'No. 7 South Calgary'},
@@ -343,7 +345,7 @@ export const routes = [
   { data: offsetRoute(crescentHeights), id: 'crescent-height-route', color: '#00aaef', name: 'No. 4 Crescent Heights' },
   { data: mountPleasant, id: 'mount-pleasant-route', color: '#e82326', name: 'No. 2 Mount Pleasant' },
   { data: offsetRoute(tuxedoPark), id: 'tuxedo-park-route', color: '#4a4ca5', name: 'No. 3 Tuxedo Park' },
-  { data: offsetRoute(ogden), id: 'ogden-route', color: '#835A39', name: '' },
+  { data: offsetRoute(ogden), id: 'ogden-route', color: '#835A39', name: 'Ogden - Downtown' },
   { data: capitolHill, id: 'capitol-hill-route', color: '#b20168', name: 'No. C Capitol Hill - Rosedale' },
   { data: offsetRoute(grandTrunk), id: 'grand-trunk-route', color: '#74cabe', name: 'No. A Grand Trunk' },
   { data: offsetRoute(offsetRoute(bowness)), id: 'bowness-route', color: '#b6449f', name: 'No. B Bowness' },

@@ -5,7 +5,7 @@ import { routes } from "./routes";
     export let speed;
     export let selectedId;
 
-    const routeToName = (id) => routes.find(route => route.id === id)?.name;
+    const routeToName = (id) => routes.find(route => route.id === id)?.name ?? '';
 
 </script>
 
