@@ -392,7 +392,7 @@ var app = (function () {
 
     const file$3 = "src/Controls.svelte";
 
-    // (20:4) {:else}
+    // (29:4) {:else}
     function create_else_block$1(ctx) {
     	let p;
 
@@ -400,7 +400,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Click a street car line to track it";
-    			add_location(p, file$3, 20, 4, 382);
+    			add_location(p, file$3, 29, 4, 618);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -414,14 +414,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(20:4) {:else}",
+    		source: "(29:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (18:4) {#if selectedId}
+    // (27:4) {#if selectedId}
     function create_if_block$1(ctx) {
     	let p;
 
@@ -429,7 +429,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Click again to stop tracking";
-    			add_location(p, file$3, 18, 4, 330);
+    			add_location(p, file$3, 27, 4, 566);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -443,7 +443,7 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(18:4) {#if selectedId}",
+    		source: "(27:4) {#if selectedId}",
     		ctx
     	});
 
@@ -451,13 +451,17 @@ var app = (function () {
     }
 
     function create_fragment$3(ctx) {
-    	let div1;
+    	let div2;
     	let div0;
     	let t0;
-    	let input;
+    	let input0;
     	let t1;
-    	let hr;
+    	let div1;
     	let t2;
+    	let input1;
+    	let t3;
+    	let hr;
+    	let t4;
     	let mounted;
     	let dispose;
 
@@ -471,42 +475,58 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div1 = element("div");
+    			div2 = element("div");
     			div0 = element("div");
     			t0 = text("Adjust Speed\n        ");
-    			input = element("input");
+    			input0 = element("input");
     			t1 = space();
+    			div1 = element("div");
+    			t2 = text("Car Icon Size\n        ");
+    			input1 = element("input");
+    			t3 = space();
     			hr = element("hr");
-    			t2 = space();
+    			t4 = space();
     			if_block.c();
-    			attr_dev(input, "type", "range");
-    			attr_dev(input, "min", "0");
-    			attr_dev(input, "max", "0.000005");
-    			attr_dev(input, "step", "0.0000001");
-    			add_location(input, file$3, 14, 8, 211);
-    			add_location(div0, file$3, 12, 4, 176);
-    			add_location(hr, file$3, 16, 4, 300);
-    			attr_dev(div1, "class", "panel-container root svelte-1v918bn");
-    			add_location(div1, file$3, 11, 0, 137);
+    			attr_dev(input0, "type", "range");
+    			attr_dev(input0, "min", "0");
+    			attr_dev(input0, "max", "0.000005");
+    			attr_dev(input0, "step", "0.0000001");
+    			add_location(input0, file$3, 19, 8, 338);
+    			add_location(div0, file$3, 17, 4, 303);
+    			attr_dev(input1, "type", "range");
+    			attr_dev(input1, "min", "10");
+    			attr_dev(input1, "max", "100");
+    			add_location(input1, file$3, 23, 8, 463);
+    			add_location(div1, file$3, 21, 4, 427);
+    			add_location(hr, file$3, 25, 4, 536);
+    			attr_dev(div2, "class", "panel-container root svelte-1v918bn");
+    			add_location(div2, file$3, 16, 0, 264);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div1, anchor);
-    			append_dev(div1, div0);
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, div0);
     			append_dev(div0, t0);
-    			append_dev(div0, input);
-    			set_input_value(input, /*speed*/ ctx[0]);
-    			append_dev(div1, t1);
-    			append_dev(div1, hr);
+    			append_dev(div0, input0);
+    			set_input_value(input0, /*speed*/ ctx[0]);
+    			append_dev(div2, t1);
+    			append_dev(div2, div1);
     			append_dev(div1, t2);
-    			if_block.m(div1, null);
+    			append_dev(div1, input1);
+    			set_input_value(input1, /*iconSize*/ ctx[2]);
+    			append_dev(div2, t3);
+    			append_dev(div2, hr);
+    			append_dev(div2, t4);
+    			if_block.m(div2, null);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "change", /*input_change_input_handler*/ ctx[2]),
-    					listen_dev(input, "input", /*input_change_input_handler*/ ctx[2])
+    					listen_dev(input0, "change", /*input0_change_input_handler*/ ctx[3]),
+    					listen_dev(input0, "input", /*input0_change_input_handler*/ ctx[3]),
+    					listen_dev(input1, "change", /*input1_change_input_handler*/ ctx[4]),
+    					listen_dev(input1, "input", /*input1_change_input_handler*/ ctx[4])
     				];
 
     				mounted = true;
@@ -514,7 +534,11 @@ var app = (function () {
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*speed*/ 1) {
-    				set_input_value(input, /*speed*/ ctx[0]);
+    				set_input_value(input0, /*speed*/ ctx[0]);
+    			}
+
+    			if (dirty & /*iconSize*/ 4) {
+    				set_input_value(input1, /*iconSize*/ ctx[2]);
     			}
 
     			if (current_block_type !== (current_block_type = select_block_type(ctx))) {
@@ -523,14 +547,14 @@ var app = (function () {
 
     				if (if_block) {
     					if_block.c();
-    					if_block.m(div1, null);
+    					if_block.m(div2, null);
     				}
     			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div1);
+    			if (detaching) detach_dev(div2);
     			if_block.d();
     			mounted = false;
     			run_all(dispose);
@@ -553,15 +577,21 @@ var app = (function () {
     	validate_slots('Controls', slots, []);
     	let { speed } = $$props;
     	let { selectedId } = $$props;
+    	let iconSize = 50;
     	const writable_props = ['speed', 'selectedId'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Controls> was created with unknown prop '${key}'`);
     	});
 
-    	function input_change_input_handler() {
+    	function input0_change_input_handler() {
     		speed = to_number(this.value);
     		$$invalidate(0, speed);
+    	}
+
+    	function input1_change_input_handler() {
+    		iconSize = to_number(this.value);
+    		$$invalidate(2, iconSize);
     	}
 
     	$$self.$$set = $$props => {
@@ -569,18 +599,33 @@ var app = (function () {
     		if ('selectedId' in $$props) $$invalidate(1, selectedId = $$props.selectedId);
     	};
 
-    	$$self.$capture_state = () => ({ speed, selectedId });
+    	$$self.$capture_state = () => ({ speed, selectedId, iconSize });
 
     	$$self.$inject_state = $$props => {
     		if ('speed' in $$props) $$invalidate(0, speed = $$props.speed);
     		if ('selectedId' in $$props) $$invalidate(1, selectedId = $$props.selectedId);
+    		if ('iconSize' in $$props) $$invalidate(2, iconSize = $$props.iconSize);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [speed, selectedId, input_change_input_handler];
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*iconSize*/ 4) {
+    			{
+    				document.documentElement.style.setProperty('--car-icon-size', `${iconSize}px`);
+    			}
+    		}
+    	};
+
+    	return [
+    		speed,
+    		selectedId,
+    		iconSize,
+    		input0_change_input_handler,
+    		input1_change_input_handler
+    	];
     }
 
     class Controls extends SvelteComponentDev {
