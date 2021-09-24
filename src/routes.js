@@ -1,4 +1,4 @@
-import { intersections } from './intersections.js'
+import { intersections } from './intersections'
 
 function route(coordinates) {
   return {
