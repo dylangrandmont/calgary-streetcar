@@ -3,6 +3,7 @@ import SidePanel from './SidePanel.svelte';
 import { routes } from './routes'
 
 let speed = 0.000002;
+let selectedId;
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHlsYW5ncmFuZG1vbnQiLCJhIjoiY2t0eDV1cmdkMnBxbzJ3bzI5dm1wbHZ4MCJ9.19ogLLAZwVYbKNoy-E_S5Q'
 const map = new mapboxgl.Map({
@@ -87,6 +88,11 @@ map.on('load', () => {
     addRouteToMap(id, data, color)
   })
 })
+routes.forEach(({id}, index) => {
+	map.on('click', id, (event) => {
+		selectedId = event.features[0]?.layer.id
+	})
+})
 </script>
 
-<SidePanel bind:speed={speed} ></SidePanel>
+<SidePanel selectedId={selectedId} bind:speed={speed} ></SidePanel>

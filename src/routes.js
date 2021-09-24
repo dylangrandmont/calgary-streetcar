@@ -118,7 +118,7 @@ const killarney = route([
   intersections['12 Av S']['8 St SW'],
   intersections['12 Av S']['14 St SW'],
   intersections['17 Av S']['14 St SW']
-])
+], 'killarney-route')
 
 const crescentHeights = route([
   intersections['16 Av N']['10 St NW'],
@@ -313,17 +313,17 @@ function offsetRoute(route) {
 }
 
 export const routes = [
-  { data: hillhurstInglewood, id: 'hillhurst-inglewood-route', color: '#e7067d' },
-  { data: sunnysideRamsay, id: 'sunnyside-ramsay-route', color: '#fee300' },
-  { data: riversideManchester, id: 'riverside-manchester-route', color: 'black' },
-  { data: southCalgary, id: 'southcalgary-route', color: '#f29517' },
-  { data: offsetRoute(killarney), id: 'killarney-route', color: '#2f71bc' },
-  { data: offsetRoute(crescentHeights), id: 'crescent-height-route', color: '#00aaef' },
-  { data: mountPleasant, id: 'mount-pleasant-route', color: '#e82326' },
-  { data: offsetRoute(tuxedoPark), id: 'tuxedo-park-route', color: '#4a4ca5' },
-  { data: ogden, id: 'ogden-route', color: '#835A39' },
-  { data: capitolHill, id: 'capitol-hill-route', color: '#b20168' },
-  { data: grandTrunk, id: 'grand-trunk-route', color: '#74cabe' },
-  { data: bowness, id: 'bowness-route', color: '#b6449f' },
-  { data: offsetRoute(offsetRoute(beltline)), id: 'beltline-route', color: '#3aba72' }
+  { data: hillhurstInglewood, id: 'hillhurst-inglewood-route', color: '#e7067d', name: 'No. 1 E and W Calgary' },
+  { data: sunnysideRamsay, id: 'sunnyside-ramsay-route', color: '#fee300', name: 'No. 8 Burns Avenue-Sunnyside' },
+  { data: riversideManchester, id: 'riverside-manchester-route', color: 'black', name: 'No. 9 Manchester-Riverside' },
+  { data: southCalgary, id: 'southcalgary-route', color: '#f29517', name: 'No. 7 South Calgary'},
+  { data: offsetRoute(killarney), id: 'killarney-route', color: '#2f71bc', name: 'No. 6 Killarney' },
+  { data: offsetRoute(crescentHeights), id: 'crescent-height-route', color: '#00aaef', name: 'No. 4 Crescent Heights' },
+  { data: mountPleasant, id: 'mount-pleasant-route', color: '#e82326', name: 'No. 2 Mount Pleasant' },
+  { data: offsetRoute(tuxedoPark), id: 'tuxedo-park-route', color: '#4a4ca5', name: 'No. 3 Tuxedo Park' },
+  { data: ogden, id: 'ogden-route', color: '#835A39', name: '' },
+  { data: capitolHill, id: 'capitol-hill-route', color: '#b20168', name: 'No. C Capitol Hill' },
+  { data: grandTrunk, id: 'grand-trunk-route', color: '#74cabe', name: 'No. A Grand Trunk' },
+  { data: bowness, id: 'bowness-route', color: '#b6449f', name: 'No. B Bowness' },
+  { data: offsetRoute(offsetRoute(beltline)), id: 'beltline-route', color: '#3aba72', name: 'No. 5 Beltline' }
 ]
