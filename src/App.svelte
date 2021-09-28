@@ -4,6 +4,8 @@
   import WelcomePanel from './WelcomePanel.svelte'
   import Legend from './Legend.svelte'
   import { routes } from './routes'
+  import { onMount } from 'svelte'
+  import ExpandToggle from './ExpandToggle.svelte'
 
   let speed = 0.000002
   let selectedId
@@ -18,7 +20,8 @@
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
     center: defaultCenter,
-    zoom: 13
+    zoom: 13,
+    logoPosition: 'top-left'
   })
 
   const streetcars = {
@@ -86,13 +89,13 @@
 
   $: {
     if (shouldTrackCamera) {
-		map.setPitch(45)
-		map.setZoom(18)
-	} else {
+      map.setPitch(45)
+      map.setZoom(18)
+    } else {
       map.flyTo({
-		  pitch: 0,
+        pitch: 0,
         center: defaultCenter,
-		zoom: 13,
+        zoom: 13
       })
     }
   }
@@ -136,8 +139,33 @@
       selectedId = selectedId === routeId ? '' : routeId
     })
   })
+
+  function toggleSidepanel() {
+    const root = document.querySelector('.root')
+    const isHidden = root.classList.contains('hidden')
+    if (isHidden) {
+      root.classList.remove('hidden')
+    } else {
+      root.classList.add('hidden')
+    }
+  }
+
+  // hack to avoid unused css selector warnings for hidden class
+  onMount(() => toggleSidepanel())
 </script>
 
+<div class="root hidden">
+  <ExpandToggle onToggle={toggleSidepanel} />
+  <Controls bind:showLegend bind:speed />
+  {#if selectedId}
+    <SelectedLine {selectedId} stopTracking={handleStopTracking} />
+  {:else}
+    <WelcomePanel />
+  {/if}
+  {#if showLegend}
+    <Legend />
+  {/if}
+</div>
 
 <style>
   .root {
@@ -147,32 +175,31 @@
     top: 0px;
     right: 0px;
     padding: 8px;
+    padding-bottom: 24px;
     display: flex;
     gap: 8px;
     flex-direction: column;
-    height: calc(100vh - 32px);
+    height: calc(100vh - 16px);
+    transition: transform 0.2s;
+    width: 274px;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  .root.hidden {
+    transform: translateX(282px);
   }
   @media only screen and (max-width: 600px) {
     .root {
       bottom: 0;
-    top: unset;
-    width: calc(100% - 16px);
-    flex-direction: row;
-    height: 200px;
-    overflow: auto;
-    background-color: rgba(255, 255, 255, 0.7);
+      top: unset;
+      width: calc(100% - 16px);
+      padding-bottom: 8px;
+      flex-direction: row;
+      height: 200px;
+      overflow-x: auto;
+    }
+    .root.hidden {
+      overflow-x: unset;
+      transform: translateY(210px);
     }
   }
-
 </style>
-<div class="root">
-	<Controls bind:showLegend bind:speed />
-	{#if selectedId}
-	<SelectedLine selectedId={selectedId} stopTracking={handleStopTracking}/>
-	{:else}
-	<WelcomePanel />
-	{/if}
-  {#if showLegend}
-  <Legend />
-  {/if}
-</div>
