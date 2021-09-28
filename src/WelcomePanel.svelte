@@ -1,20 +1,3 @@
-<script>
-import { onMount } from "svelte";
-    let open;
-    const itemKey = 'info-panel-open'
-
-    onMount(() => {
-        open = localStorage.getItem(itemKey) === "true" ? true : false;
-    })
-
-    $: {
-        if (open !== undefined) {
-            localStorage.setItem('info-panel-open', open)
-        }
-    }
-</script>
-
-
 <style>
   .root {
     flex: 1 1 auto;
