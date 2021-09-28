@@ -179,7 +179,7 @@
     display: flex;
     gap: 8px;
     flex-direction: column;
-    height: calc(100vh - 16px);
+    height: calc(100vh - 28px);
     transition: transform 0.2s;
     width: 274px;
     background-color: rgba(255, 255, 255, 0.7);
