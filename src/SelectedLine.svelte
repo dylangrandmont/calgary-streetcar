@@ -1,19 +1,24 @@
 <script>
     import { routes } from './routes'
+    import LegendRow from './LegendRow.svelte'
 
     export let selectedId
+    export let stopTracking
 
     const selectedRoute = routes.find(({id}) => id === selectedId)
 </script>
 
 <style>
-    .line {
-        width: 100%;
-        height: 4px;
+    button {
+        margin-block-start: 1em;
     }
 </style>
 
 <div class="panel-container">
-    {selectedRoute.name}
-    <div class="line" style={`background-color: ${selectedRoute.color}`}></div>
+    <div class="flex header">
+        <LegendRow route={selectedRoute} />
+    </div>
+    <button on:click={stopTracking}>
+        Stop Tracking
+    </button>
 </div>

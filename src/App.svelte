@@ -2,12 +2,14 @@
   import Controls from './Controls.svelte'
   import SelectedLine from './SelectedLine.svelte'
   import WelcomePanel from './WelcomePanel.svelte'
+  import Legend from './Legend.svelte'
   import { routes } from './routes'
 
   let speed = 0.000002
   let selectedId
   let trackIndex
   let shouldTrackCamera
+  let showLegend = true
 
   const defaultCenter = [-114.06, 51.05]
 
@@ -152,10 +154,13 @@
   }
 </style>
 <div class="root">
-	<Controls selectedId={selectedId} bind:speed />
+	<Controls bind:showLegend bind:speed />
 	{#if selectedId}
-	<SelectedLine selectedId={selectedId}/>
+	<SelectedLine selectedId={selectedId} stopTracking={handleStopTracking}/>
 	{:else}
 	<WelcomePanel />
 	{/if}
+  {#if showLegend}
+  <Legend />
+  {/if}
 </div>
