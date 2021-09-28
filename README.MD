@@ -23,9 +23,13 @@ npm run install
 npm run dev
 ```
 
+## Deploy
+
+Deploy the app using `npm run deploy`, using `gh-pages`.
+
 ## View Hosted Site
 
-The site is available on the github page associated with this repository
+The site is available on the [github page associated with this repository](https://dylangrandmont.github.io/calgary-streetcar/).
 
 ## Credits
 
