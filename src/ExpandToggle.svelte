@@ -28,7 +28,7 @@
     position: absolute;
     left: 0px;
     width: 1px;
-    background-color: black;
+    background-color: var(--theme-color-dark);
   }
   .transition:hover::before {
     padding: 8px;
@@ -38,9 +38,10 @@
     content: '→';
     position: absolute;
     right: 0px;
-    border: 1px solid black;
+    border: 1px solid var(--theme-color-dark);
     padding: 4px;
-    background: rgba(255, 255, 255, 0.7);
+    background-color: var(--theme-color-primary-light);
+    opacity: 0.9;
   }
   .transition.hidden::before {
     content: '←';
@@ -60,8 +61,6 @@
     .transition::before {
       content: '↓';
       left: 0px;
-      border: 1px solid black;
-      background: rgba(255, 255, 255, 0.7);
       width: min-content;
     }
   }
