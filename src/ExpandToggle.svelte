@@ -24,6 +24,7 @@
 
 <style>
   .transition {
+    cursor: pointer;
     height: 100%;
     position: absolute;
     left: 0px;
