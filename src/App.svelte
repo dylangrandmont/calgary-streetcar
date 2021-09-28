@@ -6,6 +6,7 @@
   import { routes } from './routes'
   import { onMount } from 'svelte'
   import ExpandToggle from './ExpandToggle.svelte'
+  import { boundary } from './boundary'
 
   let speed = 0.000002
   let selectedId
@@ -20,7 +21,7 @@
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
     center: defaultCenter,
-    zoom: 13,
+    zoom: 12,
     logoPosition: 'top-left'
   })
 
@@ -128,10 +129,32 @@
     })
   }
 
+  function addBoundary() {
+    map.addSource('boundary', {
+      type: 'geojson',
+      data: boundary
+    })
+    map.addLayer({
+      id: 'boundary',
+      type: 'line',
+      source: 'boundary',
+      layout: {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      paint: {
+        'line-color': 'black',
+        'line-width': 4,
+        'line-dasharray': [1, 2]
+      }
+    })
+  }
+  
   map.on('load', () => {
     routes.forEach(({ data, id, color }) => {
       addRouteToMap(id, data, color)
     })
+    addBoundary()
   })
   routes.forEach(({ id }) => {
     map.on('click', id, (event) => {

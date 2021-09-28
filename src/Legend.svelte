@@ -15,5 +15,6 @@
     {#each routes as route}
     <LegendRow route={route} />
     {/each}
+    <LegendRow route={{color: 'black', name: 'City Boundary (1923- 1950)'}} dashed={true}/>
     </div>
 </div>
