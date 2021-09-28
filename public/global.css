@@ -40,7 +40,15 @@ body {
   border-radius: 2px;
   border: 1px solid black;
   width: 240px;
+  overflow: auto;
 }
+
+@media only screen and (max-width: 600px) {
+  .panel-container {
+    flex: 0 0  auto !important;
+  }
+}
+
 
 .flex {
   display: flex;

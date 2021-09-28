@@ -152,6 +152,18 @@
     flex-direction: column;
     height: calc(100vh - 32px);
   }
+  @media only screen and (max-width: 600px) {
+    .root {
+      bottom: 0;
+    top: unset;
+    width: calc(100% - 16px);
+    flex-direction: row;
+    height: 200px;
+    overflow: auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
 </style>
 <div class="root">
 	<Controls bind:showLegend bind:speed />
