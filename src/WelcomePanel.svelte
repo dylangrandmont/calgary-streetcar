@@ -14,9 +14,15 @@ import { onMount } from "svelte";
     }
 </script>
 
-<div class="panel-container">
-  <details bind:open={open}>
-    <summary>Calgary Streetcar</summary>
+
+<style>
+  .root {
+    flex: 1 1 auto;
+    overflow: auto;
+  }
+</style>
+<div class="panel-container root">
+    <b>Calgary Streetcar</b>
     <p>
       Prior to WW2, streetcar networks were very common throughout North America. These networks had frequent service, were well connected,
       and enabled people to live further beyond walking distance from their employment. These networks enabled the first boom of
@@ -32,5 +38,4 @@ import { onMount } from "svelte";
       In the 1940s and 1950s, these networks were frequently dismantled in favour of bus service, and more importantly, the use of private
       automobiles.
     </p>
-  </details>
 </div>

@@ -11,6 +11,7 @@
 <style>
     .root {
         padding: 16px 16px 0px;
+        flex: 0 0 auto;
     }
 </style>
 

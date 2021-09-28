@@ -136,7 +136,22 @@
   })
 </script>
 
-<div style="position: absolute; z-index: 1; top: 0px; right: 0px; padding: 8px; display: grid; grid-gap: 8px;">
+
+<style>
+  .root {
+    position: absolute;
+    z-index: 1;
+    flex-wrap: nowrap;
+    top: 0px;
+    right: 0px;
+    padding: 8px;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    height: calc(100vh - 32px);
+  }
+</style>
+<div class="root">
 	<Controls selectedId={selectedId} bind:speed />
 	{#if selectedId}
 	<SelectedLine selectedId={selectedId}/>

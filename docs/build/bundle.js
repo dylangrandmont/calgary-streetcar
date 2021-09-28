@@ -64,9 +64,6 @@ var app = (function () {
     function set_input_value(input, value) {
         input.value = value == null ? '' : value;
     }
-    function set_style(node, key, value, important) {
-        node.style.setProperty(key, value, important ? 'important' : '');
-    }
     function custom_event(type, detail, bubbles = false) {
         const e = document.createEvent('CustomEvent');
         e.initCustomEvent(type, bubbles, false, detail);
@@ -392,7 +389,7 @@ var app = (function () {
 
     const file$3 = "src/Controls.svelte";
 
-    // (29:4) {:else}
+    // (30:4) {:else}
     function create_else_block$1(ctx) {
     	let p;
 
@@ -400,7 +397,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Click a street car line to track it";
-    			add_location(p, file$3, 29, 4, 618);
+    			add_location(p, file$3, 30, 4, 642);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -414,14 +411,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(29:4) {:else}",
+    		source: "(30:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (27:4) {#if selectedId}
+    // (28:4) {#if selectedId}
     function create_if_block$1(ctx) {
     	let p;
 
@@ -429,7 +426,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Click again to stop tracking";
-    			add_location(p, file$3, 27, 4, 566);
+    			add_location(p, file$3, 28, 4, 590);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -443,7 +440,7 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(27:4) {#if selectedId}",
+    		source: "(28:4) {#if selectedId}",
     		ctx
     	});
 
@@ -491,16 +488,16 @@ var app = (function () {
     			attr_dev(input0, "min", "0");
     			attr_dev(input0, "max", "0.000005");
     			attr_dev(input0, "step", "0.0000001");
-    			add_location(input0, file$3, 19, 8, 338);
-    			add_location(div0, file$3, 17, 4, 303);
+    			add_location(input0, file$3, 20, 8, 362);
+    			add_location(div0, file$3, 18, 4, 327);
     			attr_dev(input1, "type", "range");
     			attr_dev(input1, "min", "10");
     			attr_dev(input1, "max", "100");
-    			add_location(input1, file$3, 23, 8, 463);
-    			add_location(div1, file$3, 21, 4, 427);
-    			add_location(hr, file$3, 25, 4, 536);
-    			attr_dev(div2, "class", "panel-container root svelte-1v918bn");
-    			add_location(div2, file$3, 16, 0, 264);
+    			add_location(input1, file$3, 24, 8, 487);
+    			add_location(div1, file$3, 22, 4, 451);
+    			add_location(hr, file$3, 26, 4, 560);
+    			attr_dev(div2, "class", "panel-container root svelte-15w8k5i");
+    			add_location(div2, file$3, 17, 0, 288);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1206,23 +1203,19 @@ var app = (function () {
 
     function create_fragment$1(ctx) {
     	let div;
-    	let details;
-    	let summary;
+    	let b;
     	let t1;
     	let p0;
     	let t3;
     	let p1;
     	let t5;
     	let p2;
-    	let mounted;
-    	let dispose;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			details = element("details");
-    			summary = element("summary");
-    			summary.textContent = "Calgary Streetcar";
+    			b = element("b");
+    			b.textContent = "Calgary Streetcar";
     			t1 = space();
     			p0 = element("p");
     			p0.textContent = "Prior to WW2, streetcar networks were very common throughout North America. These networks had frequent service, were well connected,\n      and enabled people to live further beyond walking distance from their employment. These networks enabled the first boom of\n      suburbanization, well before the widespread use of private automobiles.";
@@ -1232,45 +1225,31 @@ var app = (function () {
     			t5 = space();
     			p2 = element("p");
     			p2.textContent = "In the 1940s and 1950s, these networks were frequently dismantled in favour of bus service, and more importantly, the use of private\n      automobiles.";
-    			add_location(summary, file$1, 18, 4, 387);
-    			add_location(p0, file$1, 19, 4, 428);
-    			add_location(p1, file$1, 24, 4, 792);
-    			add_location(p2, file$1, 30, 4, 1271);
-    			add_location(details, file$1, 17, 2, 356);
-    			attr_dev(div, "class", "panel-container");
-    			add_location(div, file$1, 16, 0, 324);
+    			add_location(b, file$1, 24, 4, 435);
+    			add_location(p0, file$1, 25, 4, 464);
+    			add_location(p1, file$1, 30, 4, 828);
+    			add_location(p2, file$1, 36, 4, 1307);
+    			attr_dev(div, "class", "panel-container root svelte-1gwd4oa");
+    			add_location(div, file$1, 23, 0, 396);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
-    			append_dev(div, details);
-    			append_dev(details, summary);
-    			append_dev(details, t1);
-    			append_dev(details, p0);
-    			append_dev(details, t3);
-    			append_dev(details, p1);
-    			append_dev(details, t5);
-    			append_dev(details, p2);
-    			details.open = /*open*/ ctx[0];
-
-    			if (!mounted) {
-    				dispose = listen_dev(details, "toggle", /*details_toggle_handler*/ ctx[1]);
-    				mounted = true;
-    			}
+    			append_dev(div, b);
+    			append_dev(div, t1);
+    			append_dev(div, p0);
+    			append_dev(div, t3);
+    			append_dev(div, p1);
+    			append_dev(div, t5);
+    			append_dev(div, p2);
     		},
-    		p: function update(ctx, [dirty]) {
-    			if (dirty & /*open*/ 1) {
-    				details.open = /*open*/ ctx[0];
-    			}
-    		},
+    		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
-    			mounted = false;
-    			dispose();
     		}
     	};
 
@@ -1302,11 +1281,6 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<WelcomePanel> was created with unknown prop '${key}'`);
     	});
 
-    	function details_toggle_handler() {
-    		open = this.open;
-    		$$invalidate(0, open);
-    	}
-
     	$$self.$capture_state = () => ({ onMount, open, itemKey });
 
     	$$self.$inject_state = $$props => {
@@ -1327,7 +1301,7 @@ var app = (function () {
     		}
     	};
 
-    	return [open, details_toggle_handler];
+    	return [open];
     }
 
     class WelcomePanel extends SvelteComponentDev {
@@ -1347,7 +1321,7 @@ var app = (function () {
     /* src/App.svelte generated by Svelte v3.43.0 */
     const file = "src/App.svelte";
 
-    // (143:1) {:else}
+    // (158:1) {:else}
     function create_else_block(ctx) {
     	let welcomepanel;
     	let current;
@@ -1380,14 +1354,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(143:1) {:else}",
+    		source: "(158:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (141:1) {#if selectedId}
+    // (156:1) {#if selectedId}
     function create_if_block(ctx) {
     	let selectedline;
     	let current;
@@ -1428,7 +1402,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(141:1) {#if selectedId}",
+    		source: "(156:1) {#if selectedId}",
     		ctx
     	});
 
@@ -1473,14 +1447,8 @@ var app = (function () {
     			create_component(controls.$$.fragment);
     			t = space();
     			if_block.c();
-    			set_style(div, "position", "absolute");
-    			set_style(div, "z-index", "1");
-    			set_style(div, "top", "0px");
-    			set_style(div, "right", "0px");
-    			set_style(div, "padding", "8px");
-    			set_style(div, "display", "grid");
-    			set_style(div, "grid-gap", "8px");
-    			add_location(div, file, 138, 0, 3696);
+    			attr_dev(div, "class", "root svelte-dt0gc");
+    			add_location(div, file, 153, 0, 3932);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
