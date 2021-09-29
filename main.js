@@ -423,6 +423,8 @@ var app = (function () {
     	let input1;
     	let t4;
     	let input2;
+    	let t5;
+    	let input3;
     	let mounted;
     	let dispose;
 
@@ -438,25 +440,29 @@ var app = (function () {
     			input0 = element("input");
     			t3 = text("\n            Car Icon Size\n            ");
     			input1 = element("input");
-    			t4 = text("\n            Legend\n            ");
+    			t4 = text("\n            Show Legend\n            ");
     			input2 = element("input");
-    			add_location(b, file$6, 21, 4, 378);
-    			add_location(p, file$6, 22, 4, 398);
+    			t5 = text("\n            Allow Sound\n            ");
+    			input3 = element("input");
+    			add_location(b, file$6, 22, 4, 405);
+    			add_location(p, file$6, 23, 4, 425);
     			attr_dev(input0, "type", "range");
     			attr_dev(input0, "min", "0");
     			attr_dev(input0, "max", "0.000005");
     			attr_dev(input0, "step", "0.0000001");
-    			add_location(input0, file$6, 25, 12, 466);
+    			add_location(input0, file$6, 26, 12, 493);
     			attr_dev(input1, "type", "range");
     			attr_dev(input1, "min", "10");
     			attr_dev(input1, "max", "100");
-    			add_location(input1, file$6, 27, 12, 578);
+    			add_location(input1, file$6, 28, 12, 605);
     			attr_dev(input2, "type", "checkbox");
-    			add_location(input2, file$6, 29, 12, 667);
+    			add_location(input2, file$6, 30, 12, 699);
+    			attr_dev(input3, "type", "checkbox");
+    			add_location(input3, file$6, 32, 12, 786);
     			attr_dev(div0, "class", "grid svelte-1v00eo1");
-    			add_location(div0, file$6, 23, 8, 410);
+    			add_location(div0, file$6, 24, 8, 437);
     			attr_dev(div1, "class", "panel-container root svelte-1v00eo1");
-    			add_location(div1, file$6, 20, 0, 339);
+    			add_location(div1, file$6, 21, 0, 366);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -472,18 +478,22 @@ var app = (function () {
     			set_input_value(input0, /*speed*/ ctx[0]);
     			append_dev(div0, t3);
     			append_dev(div0, input1);
-    			set_input_value(input1, /*iconSize*/ ctx[2]);
+    			set_input_value(input1, /*iconSize*/ ctx[3]);
     			append_dev(div0, t4);
     			append_dev(div0, input2);
     			input2.checked = /*showLegend*/ ctx[1];
+    			append_dev(div0, t5);
+    			append_dev(div0, input3);
+    			input3.checked = /*allowSound*/ ctx[2];
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "change", /*input0_change_input_handler*/ ctx[3]),
-    					listen_dev(input0, "input", /*input0_change_input_handler*/ ctx[3]),
-    					listen_dev(input1, "change", /*input1_change_input_handler*/ ctx[4]),
-    					listen_dev(input1, "input", /*input1_change_input_handler*/ ctx[4]),
-    					listen_dev(input2, "change", /*input2_change_handler*/ ctx[5])
+    					listen_dev(input0, "change", /*input0_change_input_handler*/ ctx[4]),
+    					listen_dev(input0, "input", /*input0_change_input_handler*/ ctx[4]),
+    					listen_dev(input1, "change", /*input1_change_input_handler*/ ctx[5]),
+    					listen_dev(input1, "input", /*input1_change_input_handler*/ ctx[5]),
+    					listen_dev(input2, "change", /*input2_change_handler*/ ctx[6]),
+    					listen_dev(input3, "change", /*input3_change_handler*/ ctx[7])
     				];
 
     				mounted = true;
@@ -494,12 +504,16 @@ var app = (function () {
     				set_input_value(input0, /*speed*/ ctx[0]);
     			}
 
-    			if (dirty & /*iconSize*/ 4) {
-    				set_input_value(input1, /*iconSize*/ ctx[2]);
+    			if (dirty & /*iconSize*/ 8) {
+    				set_input_value(input1, /*iconSize*/ ctx[3]);
     			}
 
     			if (dirty & /*showLegend*/ 2) {
     				input2.checked = /*showLegend*/ ctx[1];
+    			}
+
+    			if (dirty & /*allowSound*/ 4) {
+    				input3.checked = /*allowSound*/ ctx[2];
     			}
     		},
     		i: noop,
@@ -527,8 +541,9 @@ var app = (function () {
     	validate_slots('Controls', slots, []);
     	let { speed } = $$props;
     	let { showLegend } = $$props;
+    	let { allowSound } = $$props;
     	let iconSize = 50;
-    	const writable_props = ['speed', 'showLegend'];
+    	const writable_props = ['speed', 'showLegend', 'allowSound'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Controls> was created with unknown prop '${key}'`);
@@ -541,7 +556,7 @@ var app = (function () {
 
     	function input1_change_input_handler() {
     		iconSize = to_number(this.value);
-    		$$invalidate(2, iconSize);
+    		$$invalidate(3, iconSize);
     	}
 
     	function input2_change_handler() {
@@ -549,17 +564,24 @@ var app = (function () {
     		$$invalidate(1, showLegend);
     	}
 
+    	function input3_change_handler() {
+    		allowSound = this.checked;
+    		$$invalidate(2, allowSound);
+    	}
+
     	$$self.$$set = $$props => {
     		if ('speed' in $$props) $$invalidate(0, speed = $$props.speed);
     		if ('showLegend' in $$props) $$invalidate(1, showLegend = $$props.showLegend);
+    		if ('allowSound' in $$props) $$invalidate(2, allowSound = $$props.allowSound);
     	};
 
-    	$$self.$capture_state = () => ({ speed, showLegend, iconSize });
+    	$$self.$capture_state = () => ({ speed, showLegend, allowSound, iconSize });
 
     	$$self.$inject_state = $$props => {
     		if ('speed' in $$props) $$invalidate(0, speed = $$props.speed);
     		if ('showLegend' in $$props) $$invalidate(1, showLegend = $$props.showLegend);
-    		if ('iconSize' in $$props) $$invalidate(2, iconSize = $$props.iconSize);
+    		if ('allowSound' in $$props) $$invalidate(2, allowSound = $$props.allowSound);
+    		if ('iconSize' in $$props) $$invalidate(3, iconSize = $$props.iconSize);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -567,7 +589,7 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*iconSize*/ 4) {
+    		if ($$self.$$.dirty & /*iconSize*/ 8) {
     			{
     				document.documentElement.style.setProperty('--car-icon-size', `${iconSize}px`);
     			}
@@ -577,17 +599,19 @@ var app = (function () {
     	return [
     		speed,
     		showLegend,
+    		allowSound,
     		iconSize,
     		input0_change_input_handler,
     		input1_change_input_handler,
-    		input2_change_handler
+    		input2_change_handler,
+    		input3_change_handler
     	];
     }
 
     class Controls extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$6, create_fragment$6, safe_not_equal, { speed: 0, showLegend: 1 });
+    		init(this, options, instance$6, create_fragment$6, safe_not_equal, { speed: 0, showLegend: 1, allowSound: 2 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -606,6 +630,10 @@ var app = (function () {
     		if (/*showLegend*/ ctx[1] === undefined && !('showLegend' in props)) {
     			console.warn("<Controls> was created without expected prop 'showLegend'");
     		}
+
+    		if (/*allowSound*/ ctx[2] === undefined && !('allowSound' in props)) {
+    			console.warn("<Controls> was created without expected prop 'allowSound'");
+    		}
     	}
 
     	get speed() {
@@ -621,6 +649,14 @@ var app = (function () {
     	}
 
     	set showLegend(value) {
+    		throw new Error("<Controls>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get allowSound() {
+    		throw new Error("<Controls>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set allowSound(value) {
     		throw new Error("<Controls>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -1460,58 +1496,64 @@ var app = (function () {
     	let p2;
     	let t7;
     	let p3;
-    	let t8;
-    	let a0;
-    	let t10;
-    	let t11;
+    	let t9;
     	let p4;
+    	let t10;
+    	let a0;
     	let t12;
-    	let a1;
+    	let t13;
+    	let p5;
     	let t14;
-    	let a2;
+    	let a1;
     	let t16;
+    	let a2;
+    	let t18;
 
     	const block = {
     		c: function create() {
     			div = element("div");
     			b = element("b");
-    			b.textContent = "Calgary's Streetcars";
+    			b.textContent = "A Brief History";
     			t1 = space();
     			p0 = element("p");
     			p0.textContent = "Prior to WWII, streetcar networks were very common throughout North America.\n      These networks had frequent service, were well connected,\n      and enabled people to live beyond walking distance from their employment. These networks enabled the first boom of\n      suburbanization, well before the widespread use of private automobiles.";
     			t3 = space();
     			p1 = element("p");
-    			p1.textContent = "Access to these networks was an important contributor to land value. Developers would often petition city governments to construct\n      these lines to support new neighbourhoods. In Calgary, the Municipal Railway operated a network connecting residents to commercial districts in the city center,\n      industrial sectors in Inglewood, Riverside, Manchester, and the CPR rail yards at the sourthern edge of the city. One line of the\n      network went to the natural parks at Bowness.";
+    			p1.textContent = "Calgary's network was first constructed in 1909 and continued operation for over four decades.\n      The map shown here represents the network as it existed in 1945.";
     			t5 = space();
     			p2 = element("p");
-    			p2.textContent = "In the 1940s and 1950s, these networks were frequently dismantled in favour of bus service, and more importantly, the use of private\n      automobiles. Calgary's system was retired in 1950. Traces of the network, such as the 5th Street loop in Sunnyside, can still be seen to this day.\n      Explore the map to learn more about this network. Click on a car to track its route.";
+    			p2.textContent = "Access to these networks was an important contributor to land value. Developers would often petition city governments to construct\n      these lines to support new neighbourhoods. In Calgary, the Municipal Railway operated a network connecting residents to commercial districts in the city center,\n      industrial sectors in Inglewood, Riverside, Manchester, and the CPR rail yards at the sourthern edge of the city. One line of the\n      network went to the natural parks at Bowness.";
     			t7 = space();
     			p3 = element("p");
-    			t8 = text("This visualization was inspired by ");
+    			p3.textContent = "In the 1940s and 1950s, these networks were frequently dismantled in favour of bus service, and more importantly, the use of private\n      automobiles. Calgary's system was retired in 1950. Traces of the network, such as the 5th Street loop in Sunnyside, can still be seen to this day.\n      Explore the map to learn more about this network. Click on a car to track its route.";
+    			t9 = space();
+    			p4 = element("p");
+    			t10 = text("This visualization was inspired by ");
     			a0 = element("a");
     			a0.textContent = "Saadiq Mohiuddin's blog post of the Municipal Railway";
-    			t10 = text(".");
-    			t11 = space();
-    			p4 = element("p");
-    			t12 = text("If you have feedback or want to make a contribution, you can reach me by ");
+    			t12 = text(".");
+    			t13 = space();
+    			p5 = element("p");
+    			t14 = text("If you have feedback or want to make a contribution, you can reach me by ");
     			a1 = element("a");
     			a1.textContent = "leaving an issue or pull request on github";
-    			t14 = text(" or by ");
+    			t16 = text(" or by ");
     			a2 = element("a");
     			a2.textContent = "tweeting at me";
-    			t16 = text(".");
+    			t18 = text(".");
     			add_location(b, file$3, 7, 4, 110);
-    			add_location(p0, file$3, 8, 4, 142);
-    			add_location(p1, file$3, 14, 4, 505);
-    			add_location(p2, file$3, 20, 4, 1014);
+    			add_location(p0, file$3, 8, 4, 137);
+    			add_location(p1, file$3, 14, 4, 500);
+    			add_location(p2, file$3, 18, 4, 689);
+    			add_location(p3, file$3, 24, 4, 1198);
     			attr_dev(a0, "href", "https://saadiqm.com/2019/04/13/calgary-historic-streetcar-map.html");
-    			add_location(a0, file$3, 26, 41, 1459);
-    			add_location(p3, file$3, 25, 4, 1414);
+    			add_location(a0, file$3, 30, 41, 1643);
+    			add_location(p4, file$3, 29, 4, 1598);
     			attr_dev(a1, "href", "https://github.com/dylangrandmont/calgary-streetcar/issues");
-    			add_location(a1, file$3, 29, 79, 1691);
+    			add_location(a1, file$3, 33, 79, 1875);
     			attr_dev(a2, "href", "https://twitter.com/dylan_grandmont");
-    			add_location(a2, file$3, 29, 201, 1813);
-    			add_location(p4, file$3, 28, 4, 1608);
+    			add_location(a2, file$3, 33, 201, 1997);
+    			add_location(p5, file$3, 32, 4, 1792);
     			attr_dev(div, "class", "panel-container root svelte-1s3mh19");
     			add_location(div, file$3, 6, 0, 71);
     		},
@@ -1529,16 +1571,18 @@ var app = (function () {
     			append_dev(div, p2);
     			append_dev(div, t7);
     			append_dev(div, p3);
-    			append_dev(p3, t8);
-    			append_dev(p3, a0);
-    			append_dev(p3, t10);
-    			append_dev(div, t11);
+    			append_dev(div, t9);
     			append_dev(div, p4);
+    			append_dev(p4, t10);
+    			append_dev(p4, a0);
     			append_dev(p4, t12);
-    			append_dev(p4, a1);
-    			append_dev(p4, t14);
-    			append_dev(p4, a2);
-    			append_dev(p4, t16);
+    			append_dev(div, t13);
+    			append_dev(div, p5);
+    			append_dev(p5, t14);
+    			append_dev(p5, a1);
+    			append_dev(p5, t16);
+    			append_dev(p5, a2);
+    			append_dev(p5, t18);
     		},
     		p: noop,
     		i: noop,
@@ -1811,7 +1855,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
-    			attr_dev(div, "class", "transition hidden svelte-1j5r296");
+    			attr_dev(div, "class", "transition hidden svelte-1j3hj1m");
     			attr_dev(div, "title", "Expand/Collapse");
     			add_location(div, file$1, 22, 0, 550);
     		},
@@ -2063,7 +2107,7 @@ var app = (function () {
     /* src/App.svelte generated by Svelte v3.43.0 */
     const file = "src/App.svelte";
 
-    // (185:2) {:else}
+    // (194:2) {:else}
     function create_else_block(ctx) {
     	let welcomepanel;
     	let current;
@@ -2096,14 +2140,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(185:2) {:else}",
+    		source: "(194:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (183:2) {#if selectedId}
+    // (192:2) {#if selectedId}
     function create_if_block_1(ctx) {
     	let selectedline;
     	let current;
@@ -2111,7 +2155,7 @@ var app = (function () {
     	selectedline = new SelectedLine({
     			props: {
     				selectedId: /*selectedId*/ ctx[0],
-    				stopTracking: /*handleStopTracking*/ ctx[3]
+    				stopTracking: /*handleStopTracking*/ ctx[4]
     			},
     			$$inline: true
     		});
@@ -2147,14 +2191,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(183:2) {#if selectedId}",
+    		source: "(192:2) {#if selectedId}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (188:2) {#if showLegend}
+    // (197:2) {#if showLegend}
     function create_if_block(ctx) {
     	let legend;
     	let current;
@@ -2186,7 +2230,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(188:2) {#if showLegend}",
+    		source: "(197:2) {#if showLegend}",
     		ctx
     	});
 
@@ -2197,13 +2241,16 @@ var app = (function () {
     	let div;
     	let expandtoggle;
     	let t0;
+    	let b;
+    	let t2;
     	let controls;
     	let updating_showLegend;
     	let updating_speed;
-    	let t1;
+    	let updating_allowSound;
+    	let t3;
     	let current_block_type_index;
     	let if_block0;
-    	let t2;
+    	let t4;
     	let current;
 
     	expandtoggle = new ExpandToggle({
@@ -2212,26 +2259,35 @@ var app = (function () {
     		});
 
     	function controls_showLegend_binding(value) {
-    		/*controls_showLegend_binding*/ ctx[6](value);
+    		/*controls_showLegend_binding*/ ctx[7](value);
     	}
 
     	function controls_speed_binding(value) {
-    		/*controls_speed_binding*/ ctx[7](value);
+    		/*controls_speed_binding*/ ctx[8](value);
+    	}
+
+    	function controls_allowSound_binding(value) {
+    		/*controls_allowSound_binding*/ ctx[9](value);
     	}
 
     	let controls_props = {};
 
-    	if (/*showLegend*/ ctx[2] !== void 0) {
-    		controls_props.showLegend = /*showLegend*/ ctx[2];
+    	if (/*showLegend*/ ctx[3] !== void 0) {
+    		controls_props.showLegend = /*showLegend*/ ctx[3];
     	}
 
-    	if (/*speed*/ ctx[1] !== void 0) {
-    		controls_props.speed = /*speed*/ ctx[1];
+    	if (/*speed*/ ctx[2] !== void 0) {
+    		controls_props.speed = /*speed*/ ctx[2];
+    	}
+
+    	if (/*allowSound*/ ctx[1] !== void 0) {
+    		controls_props.allowSound = /*allowSound*/ ctx[1];
     	}
 
     	controls = new Controls({ props: controls_props, $$inline: true });
     	binding_callbacks.push(() => bind(controls, 'showLegend', controls_showLegend_binding));
     	binding_callbacks.push(() => bind(controls, 'speed', controls_speed_binding));
+    	binding_callbacks.push(() => bind(controls, 'allowSound', controls_allowSound_binding));
     	const if_block_creators = [create_if_block_1, create_else_block];
     	const if_blocks = [];
 
@@ -2242,20 +2298,25 @@ var app = (function () {
 
     	current_block_type_index = select_block_type(ctx);
     	if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-    	let if_block1 = /*showLegend*/ ctx[2] && create_if_block(ctx);
+    	let if_block1 = /*showLegend*/ ctx[3] && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
     			div = element("div");
     			create_component(expandtoggle.$$.fragment);
     			t0 = space();
-    			create_component(controls.$$.fragment);
-    			t1 = space();
-    			if_block0.c();
+    			b = element("b");
+    			b.textContent = "Calgary's Streetcars (1909-1950)";
     			t2 = space();
+    			create_component(controls.$$.fragment);
+    			t3 = space();
+    			if_block0.c();
+    			t4 = space();
     			if (if_block1) if_block1.c();
-    			attr_dev(div, "class", "root hidden svelte-19vgmi");
-    			add_location(div, file, 179, 0, 4712);
+    			attr_dev(b, "class", "title svelte-qmh8x9");
+    			add_location(b, file, 189, 2, 4972);
+    			attr_dev(div, "class", "root hidden svelte-qmh8x9");
+    			add_location(div, file, 187, 0, 4898);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2264,26 +2325,34 @@ var app = (function () {
     			insert_dev(target, div, anchor);
     			mount_component(expandtoggle, div, null);
     			append_dev(div, t0);
-    			mount_component(controls, div, null);
-    			append_dev(div, t1);
-    			if_blocks[current_block_type_index].m(div, null);
+    			append_dev(div, b);
     			append_dev(div, t2);
+    			mount_component(controls, div, null);
+    			append_dev(div, t3);
+    			if_blocks[current_block_type_index].m(div, null);
+    			append_dev(div, t4);
     			if (if_block1) if_block1.m(div, null);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
     			const controls_changes = {};
 
-    			if (!updating_showLegend && dirty & /*showLegend*/ 4) {
+    			if (!updating_showLegend && dirty & /*showLegend*/ 8) {
     				updating_showLegend = true;
-    				controls_changes.showLegend = /*showLegend*/ ctx[2];
+    				controls_changes.showLegend = /*showLegend*/ ctx[3];
     				add_flush_callback(() => updating_showLegend = false);
     			}
 
-    			if (!updating_speed && dirty & /*speed*/ 2) {
+    			if (!updating_speed && dirty & /*speed*/ 4) {
     				updating_speed = true;
-    				controls_changes.speed = /*speed*/ ctx[1];
+    				controls_changes.speed = /*speed*/ ctx[2];
     				add_flush_callback(() => updating_speed = false);
+    			}
+
+    			if (!updating_allowSound && dirty & /*allowSound*/ 2) {
+    				updating_allowSound = true;
+    				controls_changes.allowSound = /*allowSound*/ ctx[1];
+    				add_flush_callback(() => updating_allowSound = false);
     			}
 
     			controls.$set(controls_changes);
@@ -2310,12 +2379,12 @@ var app = (function () {
     				}
 
     				transition_in(if_block0, 1);
-    				if_block0.m(div, t2);
+    				if_block0.m(div, t4);
     			}
 
-    			if (/*showLegend*/ ctx[2]) {
+    			if (/*showLegend*/ ctx[3]) {
     				if (if_block1) {
-    					if (dirty & /*showLegend*/ 4) {
+    					if (dirty & /*showLegend*/ 8) {
     						transition_in(if_block1, 1);
     					}
     				} else {
@@ -2388,6 +2457,7 @@ var app = (function () {
     	let trackIndex;
     	let shouldTrackCamera;
     	let showLegend = true;
+    	let allowSound = true;
     	const defaultCenter = [-114.06, 51.05];
     	mapboxgl.accessToken = 'pk.eyJ1IjoiZHlsYW5ncmFuZG1vbnQiLCJhIjoiY2t0eDV1cmdkMnBxbzJ3bzI5dm1wbHZ4MCJ9.19ogLLAZwVYbKNoy-E_S5Q';
 
@@ -2529,12 +2599,17 @@ var app = (function () {
 
     	function controls_showLegend_binding(value) {
     		showLegend = value;
-    		$$invalidate(2, showLegend);
+    		$$invalidate(3, showLegend);
     	}
 
     	function controls_speed_binding(value) {
     		speed = value;
-    		$$invalidate(1, speed);
+    		$$invalidate(2, speed);
+    	}
+
+    	function controls_allowSound_binding(value) {
+    		allowSound = value;
+    		$$invalidate(1, allowSound);
     	}
 
     	$$self.$capture_state = () => ({
@@ -2551,6 +2626,7 @@ var app = (function () {
     		trackIndex,
     		shouldTrackCamera,
     		showLegend,
+    		allowSound,
     		defaultCenter,
     		map,
     		streetcars,
@@ -2563,11 +2639,12 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('speed' in $$props) $$invalidate(1, speed = $$props.speed);
+    		if ('speed' in $$props) $$invalidate(2, speed = $$props.speed);
     		if ('selectedId' in $$props) $$invalidate(0, selectedId = $$props.selectedId);
-    		if ('trackIndex' in $$props) $$invalidate(4, trackIndex = $$props.trackIndex);
-    		if ('shouldTrackCamera' in $$props) $$invalidate(5, shouldTrackCamera = $$props.shouldTrackCamera);
-    		if ('showLegend' in $$props) $$invalidate(2, showLegend = $$props.showLegend);
+    		if ('trackIndex' in $$props) $$invalidate(5, trackIndex = $$props.trackIndex);
+    		if ('shouldTrackCamera' in $$props) $$invalidate(6, shouldTrackCamera = $$props.shouldTrackCamera);
+    		if ('showLegend' in $$props) $$invalidate(3, showLegend = $$props.showLegend);
+    		if ('allowSound' in $$props) $$invalidate(1, allowSound = $$props.allowSound);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -2576,14 +2653,24 @@ var app = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*selectedId*/ 1) {
-    			$$invalidate(4, trackIndex = routes.findIndex(({ id }) => id === selectedId));
+    			$$invalidate(5, trackIndex = routes.findIndex(({ id }) => id === selectedId));
     		}
 
-    		if ($$self.$$.dirty & /*trackIndex*/ 16) {
-    			$$invalidate(5, shouldTrackCamera = trackIndex > -1);
+    		if ($$self.$$.dirty & /*selectedId, allowSound*/ 3) {
+    			{
+    				if (selectedId && allowSound) {
+    					const sound = new Audio('/Tram-bell-sound-effect.mp3');
+    					sound.volume = 0.05;
+    					sound.play();
+    				}
+    			}
     		}
 
-    		if ($$self.$$.dirty & /*shouldTrackCamera*/ 32) {
+    		if ($$self.$$.dirty & /*trackIndex*/ 32) {
+    			$$invalidate(6, shouldTrackCamera = trackIndex > -1);
+    		}
+
+    		if ($$self.$$.dirty & /*shouldTrackCamera*/ 64) {
     			{
     				if (shouldTrackCamera) {
     					map.setPitch(45);
@@ -2601,13 +2688,15 @@ var app = (function () {
 
     	return [
     		selectedId,
+    		allowSound,
     		speed,
     		showLegend,
     		handleStopTracking,
     		trackIndex,
     		shouldTrackCamera,
     		controls_showLegend_binding,
-    		controls_speed_binding
+    		controls_speed_binding,
+    		controls_allowSound_binding
     	];
     }
 
