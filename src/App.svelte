@@ -13,7 +13,7 @@
   let trackIndex
   let shouldTrackCamera
   let showLegend = true
-  let allowSound = true;
+  let allowSound = false;
 
   const defaultCenter = [-114.06, 51.05]
 
