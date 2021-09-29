@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,18 +8,88 @@
 
 	<title>Calgary Streetcar Network</title>
 
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet" />
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet" />
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
 	<link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">	<link rel='stylesheet' href='./global.css'>
-	<link rel='stylesheet' href='./build/bundle.css'>
+	<style>
+	:root {
+		--car-icon-size: 50px;
+		--theme-color-light: #fff9f6;
+		--theme-color-dark: #222720;
+		--theme-color-primary-dark: #a24243;
+		--theme-color-primary-main: #bb4e49;
+		--theme-color-primary-light: #cd6d5d;
+	  }
+	  
+	  html,
+	  body {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	  }
+	  
+	  body {
+		margin: 0;
+		padding: 0;
+		color: var(--theme-color-dark);
+		box-sizing: border-box;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+		overflow:hidden;
+	  }
+	  
+	  button {
+		background-color: var(--theme-color-primary-dark);
+		color: var(--theme-color-light);
+		border-radius: 2px;
+		padding: 8px 16px;
+		font-size: 0.8em;
+		border: none;
+		cursor: pointer;
+	  }
+	  
+	  #map {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+	  }
+	  .marker {
+		background-image: url('./car.jpeg');
+		background-size: cover;
+		width: var(--car-icon-size);
+		height: var(--car-icon-size);
+		border-radius: 50%;
+		border: 4px solid;
+		cursor: pointer;
+	  }
+	  
+	  .panel-container {
+		background-color: white;
+		padding: 16px;
+		border-radius: 2px;
+		border: 1px solid var(--theme-color-dark);
+		width: 240px;
+		overflow: auto;
+	  }
+	  
+	  @media only screen and (max-width: 600px) {
+		.panel-container {
+		  flex: 0 0  auto !important;
+		}
+	  }
+	  
+	  .flex {
+		display: flex;
+	  }
+	</style>
+	<link rel='stylesheet' href='main-0bcf068b.css'>
+	<script defer src='main-0bcf068b.js'></script>
+	</head>
 
-	<script defer src='./build/bundle.js'></script>
-</head>
-
-<body>
-	<div id="map"></div>
-</body>
-</html>
+	<body>
+		<div id="map"></div>
+	</body>
+	</html>
