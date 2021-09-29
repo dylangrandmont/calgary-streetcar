@@ -2314,9 +2314,9 @@ var app = (function () {
     			t4 = space();
     			if (if_block1) if_block1.c();
     			attr_dev(b, "class", "title svelte-qmh8x9");
-    			add_location(b, file, 189, 2, 4972);
+    			add_location(b, file, 189, 2, 4973);
     			attr_dev(div, "class", "root hidden svelte-qmh8x9");
-    			add_location(div, file, 187, 0, 4898);
+    			add_location(div, file, 187, 0, 4899);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2659,7 +2659,7 @@ var app = (function () {
     		if ($$self.$$.dirty & /*selectedId, allowSound*/ 3) {
     			{
     				if (selectedId && allowSound) {
-    					const sound = new Audio('/Tram-bell-sound-effect.mp3');
+    					const sound = new Audio('./Tram-bell-sound-effect.mp3');
     					sound.volume = 0.05;
     					sound.play();
     				}
