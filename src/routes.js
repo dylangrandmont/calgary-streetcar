@@ -25,9 +25,21 @@ const hillhurstInglewood = route([
   [-114.04317766836698, 51.04372702045797],
   [-114.0372805028625, 51.0422846914819],
   [-114.03682431075224, 51.04219493204588],
-  [-114.01802378219071, 51.03451108917668],
-  [-114.01917322421849, 51.03349617324513],
-  [-114.01918637603683, 51.02713982395138]
+  intersections['9 Av S']['20 St E'],
+  intersections['22 Av S']['17 St SE'],
+  [-114.01918637603683, 51.02713982395138],
+  intersections['22 Av S']['17 St SE'],
+  intersections['9 Av S']['20 St E'],
+
+
+  [-114.03682431075224, 51.04219493204588],
+  [-114.0372805028625, 51.0422846914819],
+  [-114.04317766836698, 51.04372702045797],
+  intersections['9 Av S']['6 St E'],
+  intersections['8 Av S']['6 St SE'],
+  intersections['8 Av S']['9 St SW'],
+  intersections['4 Av S']['9 St SW'],
+  intersections['Memorial Dr']['10 St NW'],
 ])
 
 const sunnysideRamsay = route([
