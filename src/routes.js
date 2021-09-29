@@ -219,7 +219,8 @@ const tuxedoPark = route([
   intersections['31 Av N']['Center St']
 ])
 
-const ogden = route([
+
+const ogdenRoute = [
   [-113.99880112307753, 50.983248488266135],
   [-113.99880112307753, 50.987371763615506],
   [-113.99888670668788, 50.987545713885496],
@@ -262,6 +263,10 @@ const ogden = route([
   intersections['9 Av S']['6 St E'],
   intersections['8 Av S']['6 St SE'],
   intersections['8 Av S']['Center St']
+]
+const ogden = route([
+  ...ogdenRoute,
+  ...[...ogdenRoute].reverse(),
 ])
 
 const capitolHill = route([
