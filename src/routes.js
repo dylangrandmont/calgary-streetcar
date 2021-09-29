@@ -258,11 +258,11 @@ const ogden = route([
 ])
 
 const capitolHill = route([
-  [-114.09721714004105, 51.0705377462257],
-  [-114.0849017998016, 51.07053755601367],
+  intersections['20 Av N']['15 St NW'],
+  intersections['20 Av N']['10 St NW'],
   intersections['16 Av N']['10 St NW'],
-  [-114.0849017998016, 51.07053755601367],
-  [-114.09721714004105, 51.0705377462257]
+  intersections['20 Av N']['10 St NW'],
+  intersections['20 Av N']['15 St NW'],
 ])
 
 const grandTrunk = route([
