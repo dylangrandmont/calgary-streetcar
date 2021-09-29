@@ -662,12 +662,25 @@ var app = (function () {
     }
 
     const intersections = {
+      '31 Av N': {
+        'Center St':[-114.0625666284332, 51.08051761717556]
+      },
+      '23 Av N': {
+        'Center St': [-114.06251168324745, 51.07330816164375],
+        'Edmonton Trail': [-114.05634482869593, 51.073332570739844]
+      },
       '20 Av N': {
+        '15 St NW': [-114.09721714004105, 51.0705377462257],
+        '10 St NW': [-114.0849017998016, 51.07053755601367],
         '7 St NW': [-114.07893964039631, 51.07054169892371],
-        'Center St': [-114.06257393380261, 51.070609731750714]
+        'Center St': [-114.06257393380261, 51.070609731750714],
+      },
+      '19 Av N': {
+        'Edmonton Trail': [-114.05605687035319, 51.0697141645007]
       },
       '16 Av N': {
         '10 St NW': [-114.08489350460921, 51.066904001348],
+        'Center St': [-114.06257210372549, 51.06691570029229],
         'Edmonton Trail': [-114.05618395994925, 51.06693626186497]
       },
       '8 Av N': {
@@ -680,6 +693,10 @@ var app = (function () {
         '14 St NW': [-114.094731781486, 51.05709687083791],
         '10 St NW': [-114.08599386788937, 51.05712357695188]
       },
+      '1 Av N': {
+        'Edmonton Trail NE': [-114.05027216576363, 51.05327391988086],
+        '12A St NE': [-114.03245254193595, 51.0532361007371],
+      },
       'Kensington Rd': {
         '10 St NW': [-114.08592990014981, 51.05253712700806],
         '14 St NW': [-114.0947245349653, 51.052520631762604],
@@ -687,10 +704,17 @@ var app = (function () {
       },
       'Memorial Dr': {
         '10 St NW': [-114.08569923100222, 51.0518089710593],
+        'Edmonton Trail NE': [-114.05037125129785, 51.050621738210474],
+      },
+      'Riverfront Av S': {
+        'Edmonton Trail NE': [-114.05154533464692, 51.04891295247008]
       },
       '4 Av S': {
         '9 St SW': [-114.08352065905363, 51.049901659316184],
         '4 St SW': [-114.07157412631952, 51.049578034093955]
+      },
+      '5 Av S': {
+        '4St SE': [-114.05294643069912, 51.04800145363462]
       },
       '8 Av S': {
         '9 St SW': [-114.0837042074354, 51.0461550109985],
@@ -703,7 +727,8 @@ var app = (function () {
         '6 St SE': [-114.04834008539397, 51.04513188716467],
       },
       '9 Av S': {
-        '6 St E': [-114.0483529394385, 51.04411080434035]
+        '6 St E': [-114.0483529394385, 51.04411080434035],
+        '20 St E': [-114.01802378219071, 51.03451108917668],
       },
       '12 Av S': {
         '18 St SW': [-114.1042183736658, 51.0425847226566],
@@ -718,6 +743,9 @@ var app = (function () {
         '14 St SW': [-114.09472267063069, 51.03781458725867],
         '2 St SE': [-114.05865238987491, 51.03783086571737],
         '1 St SW': [-114.06605539761398, 51.03781793732603]
+      },
+      '22 Av S': {
+        '17 St SE': [-114.01917322421849, 51.03349617324513],
       },
       '23 Av S': {
         '29 St SW': [-114.12956914789937, 51.033161877914324],
@@ -758,9 +786,21 @@ var app = (function () {
       [-114.04317766836698, 51.04372702045797],
       [-114.0372805028625, 51.0422846914819],
       [-114.03682431075224, 51.04219493204588],
-      [-114.01802378219071, 51.03451108917668],
-      [-114.01917322421849, 51.03349617324513],
-      [-114.01918637603683, 51.02713982395138]
+      intersections['9 Av S']['20 St E'],
+      intersections['22 Av S']['17 St SE'],
+      [-114.01918637603683, 51.02713982395138],
+      intersections['22 Av S']['17 St SE'],
+      intersections['9 Av S']['20 St E'],
+
+
+      [-114.03682431075224, 51.04219493204588],
+      [-114.0372805028625, 51.0422846914819],
+      [-114.04317766836698, 51.04372702045797],
+      intersections['9 Av S']['6 St E'],
+      intersections['8 Av S']['6 St SE'],
+      intersections['8 Av S']['9 St SW'],
+      intersections['4 Av S']['9 St SW'],
+      intersections['Memorial Dr']['10 St NW'],
     ]);
 
     const sunnysideRamsay = route([
@@ -793,18 +833,7 @@ var app = (function () {
       [-114.04119794256063, 51.036274899551046]
     ]);
 
-    const riversideManchester = route([
-      [-114.03245254193595, 51.0532361007371],
-      [-114.05027216576363, 51.05327391988086],
-      [-114.05037125129785, 51.050621738210474],
-      [-114.05154533464692, 51.04891295247008],
-      [-114.05294643069912, 51.04800145363462],
-      [-114.0530456818646, 51.04758695979581],
-      intersections['8 Av S']['4 St SE'],
-      intersections['8 Av S']['1 St SW'],
-      intersections['12 Av S']['1 St SW'],
-      intersections['12 Av S']['2 St SE'],
-      intersections['17 Av S']['2 St SE'],
+    const southManchester = [
       [-114.05891505161102, 51.0350793399651],
       [-114.05947295099163, 51.03361864160707],
       [-114.05956748319745, 51.028709978619666],
@@ -816,6 +845,32 @@ var app = (function () {
       [-114.06779864140104, 51.00859304219302],
       [-114.06771817513604, 51.008680800229925],
       [-114.06776913710388, 51.008873192268275]
+
+    ];
+    const riversideManchester = route([
+      intersections['1 Av N']['12A St NE'],
+      intersections['1 Av N']['Edmonton Trail NE'],
+      intersections['Memorial Dr']['Edmonton Trail NE'],
+      intersections['Riverfront Av S']['Edmonton Trail NE'],
+      intersections['5 Av S']['4St SE'],
+      intersections['8 Av S']['4 St SE'],
+      intersections['8 Av S']['1 St SW'],
+      intersections['12 Av S']['1 St SW'],
+      intersections['12 Av S']['2 St SE'],
+      intersections['17 Av S']['2 St SE'],
+      ...southManchester,
+      ...[...southManchester].reverse(),
+      intersections['17 Av S']['2 St SE'],
+      intersections['12 Av S']['2 St SE'],
+      intersections['12 Av S']['1 St SW'],
+      intersections['8 Av S']['1 St SW'],
+      intersections['8 Av S']['4 St SE'],
+      intersections['5 Av S']['4St SE'],
+      intersections['Riverfront Av S']['Edmonton Trail NE'],
+      intersections['Memorial Dr']['Edmonton Trail NE'],
+      intersections['1 Av N']['Edmonton Trail NE'],
+      intersections['1 Av N']['12A St NE'],
+
     ]);
 
     const southCalgary = route([
@@ -835,21 +890,22 @@ var app = (function () {
 
     const offset = 1e-4;
 
-    const killarney = route([
-      intersections['17 Av S']['26 St SW'],
-      intersections['17 Av S']['29 St SW'],
-      intersections['23 Av S']['29 St SW'],
-      intersections['23 Av S']['26 St SW'],
-      intersections['17 Av S']['26 St SW'],
+    const killarney = route(
+      [
+        intersections['17 Av S']['26 St SW'],
+        intersections['17 Av S']['29 St SW'],
+        intersections['23 Av S']['29 St SW'],
+        intersections['23 Av S']['26 St SW'],
+        intersections['17 Av S']['26 St SW'],
 
-      intersections['17 Av S']['14 St SW'],
-      intersections['17 Av S']['1 St SW'],
-      intersections['8 Av S']['1 St SW'],
-      intersections['8 Av S']['8 St SW'],
-      intersections['12 Av S']['8 St SW'],
-      intersections['12 Av S']['14 St SW'],
-      intersections['17 Av S']['14 St SW']
-    ]);
+        intersections['17 Av S']['14 St SW'],
+        intersections['17 Av S']['1 St SW'],
+        intersections['8 Av S']['1 St SW'],
+        intersections['8 Av S']['8 St SW'],
+        intersections['12 Av S']['8 St SW'],
+        intersections['12 Av S']['14 St SW'],
+        intersections['17 Av S']['14 St SW']
+      ]);
 
     const crescentHeights = route([
       intersections['16 Av N']['10 St NW'],
@@ -886,48 +942,44 @@ var app = (function () {
       [-114.08489350460921, 51.066904001348]
     ]);
 
+    const toElbowPark = [
+      intersections['8 Av S']['Center St'],
+      intersections['8 Av S']['1 St SW'],
+      intersections['12 Av S']['1 St SW'],
+      [-114.07156268197173, 51.041667315481085],
+      [-114.07151627155552, 51.02970016087958],
+      [-114.07314144774193, 51.02963947142243],
+      [-114.0755837013509, 51.02889675928498],
+      [-114.0781177043355, 51.02739885277752],
+      [-114.07846226790436, 51.02707203118832],
+      [-114.07883916075279, 51.02612382969992],
+      [-114.07791852502602, 51.023378286034514],
+      [-114.0778335229034, 51.01850581066723]
+    ];
+
     const mountPleasant = route([
       intersections['20 Av N']['7 St NW'],
       intersections['20 Av N']['Center St'],
-      intersections['8 Av S']['Center St'],
-      intersections['8 Av S']['1 St SW'],
-      intersections['12 Av S']['1 St SW'],
-      [-114.07156268197173, 51.041667315481085],
-      [-114.07151627155552, 51.02970016087958],
-      [-114.07314144774193, 51.02963947142243],
-      [-114.0755837013509, 51.02889675928498],
-      [-114.0781177043355, 51.02739885277752],
-      [-114.07846226790436, 51.02707203118832],
-      [-114.07883916075279, 51.02612382969992],
-      [-114.07791852502602, 51.023378286034514],
-      [-114.0778335229034, 51.01850581066723]
+      ...toElbowPark,
+      ...[...toElbowPark].reverse(),
+      intersections['20 Av N']['Center St'],
+      intersections['20 Av N']['7 St NW'],
     ]);
 
     const tuxedoPark = route([
-      [-114.0625666284332, 51.08051761717556],
-      [-114.06249866849501, 51.07331231657526],
-      [-114.05634463964452, 51.07333567547062],
-      [-114.05610152100759, 51.07065978671271],
+      intersections['31 Av N']['Center St'],
+      intersections['23 Av N']['Center St'],
+      intersections['23 Av N']['Edmonton Trail'],
+      intersections['19 Av N']['Edmonton Trail'],
       intersections['16 Av N']['Edmonton Trail'],
-      [-114.06257210372549, 51.06691570029229],
-      [-114.06249866849501, 51.07331231657526],
-      [-114.06257393380261, 51.070609731750714],
-      intersections['20 Av N']['Center St'],
-      intersections['8 Av S']['Center St'],
-      intersections['8 Av S']['1 St SW'],
-      intersections['12 Av S']['1 St SW'],
-      [-114.07156268197173, 51.041667315481085],
-      [-114.07151627155552, 51.02970016087958],
-      [-114.07314144774193, 51.02963947142243],
-      [-114.0755837013509, 51.02889675928498],
-      [-114.0781177043355, 51.02739885277752],
-      [-114.07846226790436, 51.02707203118832],
-      [-114.07883916075279, 51.02612382969992],
-      [-114.07791852502602, 51.023378286034514],
-      [-114.0778335229034, 51.01850581066723]
+      intersections['16 Av N']['Center St'],
+      ...toElbowPark,
+      ...[...toElbowPark].reverse(),
+      intersections['31 Av N']['Center St']
     ]);
 
-    const ogden = route([
+
+    const ogdenRoute = [
       [-113.99880112307753, 50.983248488266135],
       [-113.99880112307753, 50.987371763615506],
       [-113.99888670668788, 50.987545713885496],
@@ -970,14 +1022,18 @@ var app = (function () {
       intersections['9 Av S']['6 St E'],
       intersections['8 Av S']['6 St SE'],
       intersections['8 Av S']['Center St']
+    ];
+    const ogden = route([
+      ...ogdenRoute,
+      ...[...ogdenRoute].reverse(),
     ]);
 
     const capitolHill = route([
-      [-114.09721714004105, 51.0705377462257],
-      [-114.0849017998016, 51.07053755601367],
+      intersections['20 Av N']['15 St NW'],
+      intersections['20 Av N']['10 St NW'],
       intersections['16 Av N']['10 St NW'],
-      [-114.0849017998016, 51.07053755601367],
-      [-114.09721714004105, 51.0705377462257],
+      intersections['20 Av N']['10 St NW'],
+      intersections['20 Av N']['15 St NW'],
     ]);
 
     const grandTrunk = route([
@@ -1003,41 +1059,48 @@ var app = (function () {
       intersections['7 Av N']['24 St NW']
     ]);
 
+    const Kensington14thToBowness = [
+      [-114.17316207239337, 51.07984729297398],
+      [-114.1720129582852, 51.07833621726261],
+      [-114.17126962026164, 51.07768303320474],
+      [-114.17077740996558, 51.07739588174196],
+      [-114.16840107868614, 51.07567743822706],
+      [-114.16763262787953, 51.075361873392566],
+      [-114.16693165330277, 51.07529963380956],
+      [-114.16574130792006, 51.07541323754493],
+      [-114.16574130792006, 51.075416393199546],
+      [-114.16423454167781, 51.07523967616143],
+      [-114.16348115846756, 51.074816814789145],
+      [-114.1526520281249, 51.06671232422135],
+      [-114.15148177301391, 51.06584750392453],
+      [-114.15113894412244, 51.065417418079356],
+      [-114.15054294822237, 51.06405123585141],
+      [-114.14912764908298, 51.06346210971278],
+      [-114.14132759415365, 51.060139844346935],
+      [-114.14068499379347, 51.05985019419703],
+      [-114.13444515725314, 51.056738485476366],
+      [-114.13370519322709, 51.05643249447681],
+      [-114.12638789806529, 51.05447084161884],
+      [-114.12583617050362, 51.05429131835533],
+      [-114.12190382103606, 51.05260445393406],
+      [-114.12133858712923, 51.05248009534121],
+      [-114.11796612252739, 51.052485028711544],
+    ];
+
     const bowness = route([
+      ...Kensington14thToBowness,
       intersections['Kensington Rd']['14 St NW'],
       intersections['Kensington Rd']['10 St NW'],
+      intersections['Memorial Dr']['10 St NW'],
       intersections['4 Av S']['9 St SW'],
       intersections['8 Av S']['9 St SW'],
       intersections['8 Av S']['Center St'],
       intersections['8 Av S']['9 St SW'],
       intersections['4 Av S']['9 St SW'],
+      intersections['Memorial Dr']['10 St NW'],
       intersections['Kensington Rd']['10 St NW'],
       intersections['Kensington Rd']['14 St NW'],
-      [-114.11796612252739, 51.052485028711544],
-      [-114.12133858712923, 51.05248009534121],
-      [-114.12190382103606, 51.05260445393406],
-      [-114.12583617050362, 51.05429131835533],
-      [-114.12638789806529, 51.05447084161884],
-      [-114.13370519322709, 51.05643249447681],
-      [-114.13444515725314, 51.056738485476366],
-      [-114.14068499379347, 51.05985019419703],
-      [-114.14132759415365, 51.060139844346935],
-      [-114.14912764908298, 51.06346210971278],
-      [-114.15054294822237, 51.06405123585141],
-      [-114.15113894412244, 51.065417418079356],
-      [-114.15148177301391, 51.06584750392453],
-      [-114.1526520281249, 51.06671232422135],
-      [-114.16348115846756, 51.074816814789145],
-      [-114.16423454167781, 51.07523967616143],
-      [-114.16574130792006, 51.075416393199546],
-      [-114.16574130792006, 51.07541323754493],
-      [-114.16693165330277, 51.07529963380956],
-      [-114.16763262787953, 51.075361873392566],
-      [-114.16840107868614, 51.07567743822706],
-      [-114.17077740996558, 51.07739588174196],
-      [-114.17126962026164, 51.07768303320474],
-      [-114.1720129582852, 51.07833621726261],
-      [-114.17316207239337, 51.07984729297398]
+      ...([...Kensington14thToBowness].reverse()),
     ]);
 
     const beltline = route([
@@ -1056,7 +1119,7 @@ var app = (function () {
       intersections['12 Av S']['18 St SW'],
       intersections['12 Av S']['2 St SE'],
       intersections['8 Av S']['2 St SE'],
-      intersections['8 Av S']['Center St'],
+      intersections['8 Av S']['Center St']
     ]);
 
     function offsetRoute(route) {
@@ -1069,15 +1132,15 @@ var app = (function () {
       }
     }
 
-    function sortByName(a,b) {
-      return a.name < b.name ? -1 : 1;
+    function sortByName(a, b) {
+      return a.name < b.name ? -1 : 1
     }
 
     const routes = [
       { data: hillhurstInglewood, id: 'hillhurst-inglewood-route', color: '#e7067d', name: 'No. 1 Hillhurst - E Calgary' },
       { data: sunnysideRamsay, id: 'sunnyside-ramsay-route', color: '#fee300', name: 'No. 8 Burns Avenue-Sunnyside' },
       { data: riversideManchester, id: 'riverside-manchester-route', color: 'black', name: 'No. 9 Manchester-Riverside' },
-      { data: southCalgary, id: 'southcalgary-route', color: '#f29517', name: 'No. 7 South Calgary'},
+      { data: southCalgary, id: 'southcalgary-route', color: '#f29517', name: 'No. 7 South Calgary' },
       { data: offsetRoute(killarney), id: 'killarney-route', color: '#2f71bc', name: 'No. 6 Killarney' },
       { data: offsetRoute(crescentHeights), id: 'crescent-height-route', color: '#00aaef', name: 'No. 4 Crescent Heights' },
       { data: mountPleasant, id: 'mount-pleasant-route', color: '#e82326', name: 'No. 2 Mount Pleasant' },
@@ -1087,7 +1150,7 @@ var app = (function () {
       { data: offsetRoute(grandTrunk), id: 'grand-trunk-route', color: '#74cabe', name: 'No. A Grand Trunk' },
       { data: offsetRoute(offsetRoute(bowness)), id: 'bowness-route', color: '#b6449f', name: 'No. B Bowness' },
       { data: offsetRoute(offsetRoute(beltline)), id: 'beltline-route', color: '#3aba72', name: 'No. 5 Beltline' },
-      { data: sunalta, id: 'sunalta-route', color: '#d7e34d', name: 'No. S Sunalta'}
+      { data: sunalta, id: 'sunalta-route', color: '#d7e34d', name: 'No. S Sunalta' }
     ].sort(sortByName);
 
     /* src/LegendRow.svelte generated by Svelte v3.43.0 */
