@@ -188,16 +188,7 @@ const mountPleasant = route([
   [-114.0778335229034, 51.01850581066723]
 ])
 
-const tuxedoPark = route([
-  [-114.0625666284332, 51.08051761717556],
-  [-114.06249866849501, 51.07331231657526],
-  [-114.05634463964452, 51.07333567547062],
-  [-114.05610152100759, 51.07065978671271],
-  intersections['16 Av N']['Edmonton Trail'],
-  [-114.06257210372549, 51.06691570029229],
-  [-114.06249866849501, 51.07331231657526],
-  [-114.06257393380261, 51.070609731750714],
-  intersections['20 Av N']['Center St'],
+const toElbowPark = [
   intersections['8 Av S']['Center St'],
   intersections['8 Av S']['1 St SW'],
   intersections['12 Av S']['1 St SW'],
@@ -210,6 +201,18 @@ const tuxedoPark = route([
   [-114.07883916075279, 51.02612382969992],
   [-114.07791852502602, 51.023378286034514],
   [-114.0778335229034, 51.01850581066723]
+
+]
+const tuxedoPark = route([
+  intersections['31 Av N']['Center St'],
+  intersections['23 Av N']['Center St'],
+  intersections['23 Av N']['Edmonton Trail'],
+  intersections['19 Av N']['Edmonton Trail'],
+  intersections['16 Av N']['Edmonton Trail'],
+  intersections['16 Av N']['Center St'],
+  ...toElbowPark,
+  ...[...toElbowPark].reverse(),
+  intersections['31 Av N']['Center St']
 ])
 
 const ogden = route([
