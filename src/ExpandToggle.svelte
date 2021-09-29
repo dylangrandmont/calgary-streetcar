@@ -57,12 +57,13 @@
     }
     .transition.hidden::before {
       content: '↑';
-      top: -30px;
+      top: 0px;
     }
     .transition::before {
       content: '↓';
       left: 0px;
       width: min-content;
+      margin-top: -28px;
     }
   }
 </style>

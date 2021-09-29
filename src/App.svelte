@@ -179,6 +179,7 @@
 
 <div class="root hidden">
   <ExpandToggle onToggle={toggleSidepanel} />
+  <b class="title">Calgary's Streetcars (1909-1950) </b>
   <Controls bind:showLegend bind:speed />
   {#if selectedId}
     <SelectedLine {selectedId} stopTracking={handleStopTracking} />
@@ -225,5 +226,10 @@
       overflow-x: unset;
       transform: translateY(210px);
     }
+  }
+
+  .title {
+    padding: 4px;
+    font-size: 1.1rem
   }
 </style>

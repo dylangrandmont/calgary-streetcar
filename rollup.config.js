@@ -55,7 +55,10 @@ const htmlOptions = {
 
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet" />
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
-	<link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@300;400;500;600;700&display=swap" rel="stylesheet">	<link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
 	<style>
@@ -80,7 +83,7 @@ const htmlOptions = {
 		padding: 0;
 		color: var(--theme-color-dark);
 		box-sizing: border-box;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+		font-family: Newsreader, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 		overflow:hidden;
 	  }
 	  

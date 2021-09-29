@@ -5,12 +5,16 @@
   }
 </style>
 <div class="panel-container root">
-    <b>Calgary's Streetcars</b>
+    <b>A Brief History</b>
     <p>
       Prior to WWII, streetcar networks were very common throughout North America.
       These networks had frequent service, were well connected,
       and enabled people to live beyond walking distance from their employment. These networks enabled the first boom of
       suburbanization, well before the widespread use of private automobiles.
+    </p>
+    <p>
+      Calgary's network was first constructed in 1909 and continued operation for over four decades.
+      The map shown here represents the network as it existed in 1945.
     </p>
     <p>
       Access to these networks was an important contributor to land value. Developers would often petition city governments to construct
