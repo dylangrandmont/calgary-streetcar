@@ -24,7 +24,7 @@
     <p>
         <div class="grid">
             Adjust Speed
-            <input type="range" min=0 max=0.000005 step=0.0000001 bind:value={speed}>
+            <input type="range" min=0 max=0.0005 step=0.00001 bind:value={speed}>
             Car Icon Size
             <input type="range" min=10 max=100 bind:value={iconSize}>
             Show Legend

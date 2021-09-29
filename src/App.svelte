@@ -8,12 +8,12 @@
   import ExpandToggle from './ExpandToggle.svelte'
   import { boundary } from './boundary'
 
-  let speed = 0.000002
+  let speed = 0.0001 // km / frame
   let selectedId
   let trackIndex
   let shouldTrackCamera
   let showLegend = true
-  let allowSound = false;
+  let allowSound = false
 
   const defaultCenter = [-114.06, 51.05]
 
@@ -63,17 +63,29 @@
     function animateMarker() {
       const nextPoint = coordinates[(trainIndex + 1) % coordinates.length]
       const lastPoint = coordinates[trainIndex % coordinates.length]
-      const distanceBetweenPoints = Math.sqrt((nextPoint[0] - lastPoint[0]) ** 2 + (nextPoint[1] - lastPoint[1]) ** 2)
-      const distanceInTimeInterval = speed * 1
-      const distanceToNextPoint = Math.sqrt((nextPoint[0] - trainCoordinate[0]) ** 2 + (nextPoint[1] - trainCoordinate[1]) ** 2)
 
+      const lineBetweenPoints = {
+        type: 'Feature',
+        geometry: {
+          type: 'LineString',
+          coordinates: [lastPoint, nextPoint]
+        }
+      }
+      const lineToNextPoint = {
+        type: 'Feature',
+        geometry: {
+          type: 'LineString',
+          coordinates: [trainCoordinate, nextPoint]
+        }
+      }
+
+      const distanceInTimeInterval = speed * 1 // distance
+      const distanceToNextPoint = turf.length(lineToNextPoint)
       if (distanceInTimeInterval > distanceToNextPoint) {
         trainCoordinate = nextPoint
         trainIndex++
       } else {
-        const newX = (distanceInTimeInterval / distanceBetweenPoints) * (nextPoint[0] - lastPoint[0]) + trainCoordinate[0]
-        const newY = (distanceInTimeInterval / distanceBetweenPoints) * (nextPoint[1] - lastPoint[1]) + trainCoordinate[1]
-        trainCoordinate = [newX, newY]
+        trainCoordinate = turf.along(lineToNextPoint, distanceInTimeInterval, 'kilometers').geometry.coordinates
       }
 
       if (trackIndex === index) {
@@ -90,8 +102,8 @@
   $: {
     if (selectedId && allowSound) {
       const sound = new Audio('./Tram-bell-sound-effect.mp3')
-      sound.volume = 0.05;
-      sound.play();
+      sound.volume = 0.05
+      sound.play()
     }
   }
   $: shouldTrackCamera = trackIndex > -1
@@ -157,7 +169,7 @@
       }
     })
   }
-  
+
   map.on('load', () => {
     routes.forEach(({ data, id, color }) => {
       addRouteToMap(id, data, color)
@@ -188,7 +200,7 @@
 <div class="root hidden">
   <ExpandToggle onToggle={toggleSidepanel} />
   <b class="title">Calgary's Streetcars (1909-1950) </b>
-  <Controls bind:showLegend bind:speed bind:allowSound/>
+  <Controls bind:showLegend bind:speed bind:allowSound />
   {#if selectedId}
     <SelectedLine {selectedId} stopTracking={handleStopTracking} />
   {:else}
@@ -200,8 +212,7 @@
 </div>
 
 <style>
-
-.root {
+  .root {
     position: absolute;
     z-index: 1;
     flex-wrap: nowrap;
@@ -238,6 +249,6 @@
 
   .title {
     padding: 4px;
-    font-size: 1.1rem
+    font-size: 1.1rem;
   }
 </style>
