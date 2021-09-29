@@ -1,6 +1,7 @@
 <script>
     export let speed;
     export let showLegend;
+    export let allowSound;
     let iconSize = 50;
 
     $: {
@@ -26,7 +27,9 @@
             <input type="range" min=0 max=0.000005 step=0.0000001 bind:value={speed}>
             Car Icon Size
             <input type="range" min=10 max=100 bind:value={iconSize}>
-            Legend
+            Show Legend
             <input type="checkbox" bind:checked={showLegend}/>
+            Allow Sound
+            <input type="checkbox" bind:checked={allowSound}/>
         </div>
 </div>

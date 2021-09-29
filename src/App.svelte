@@ -13,6 +13,7 @@
   let trackIndex
   let shouldTrackCamera
   let showLegend = true
+  let allowSound = true;
 
   const defaultCenter = [-114.06, 51.05]
 
@@ -86,6 +87,13 @@
   }
 
   $: trackIndex = routes.findIndex(({ id }) => id === selectedId)
+  $: {
+    if (selectedId && allowSound) {
+      const sound = new Audio('/Tram-bell-sound-effect.mp3')
+      sound.volume = 0.05;
+      sound.play();
+    }
+  }
   $: shouldTrackCamera = trackIndex > -1
 
   $: {
@@ -180,7 +188,7 @@
 <div class="root hidden">
   <ExpandToggle onToggle={toggleSidepanel} />
   <b class="title">Calgary's Streetcars (1909-1950) </b>
-  <Controls bind:showLegend bind:speed />
+  <Controls bind:showLegend bind:speed bind:allowSound/>
   {#if selectedId}
     <SelectedLine {selectedId} stopTracking={handleStopTracking} />
   {:else}

@@ -168,7 +168,7 @@ export default {
 
     copy({
       targets: [
-        { src: ['public/car.jpeg'], dest: 'public/build/' },
+        { src: ['public/car.jpeg', 'public/Tram-bell-sound-effect.mp3'], dest: 'public/build/' },
         { src: 'public/icons/**/*', dest: 'public/build/icons' }
       ]
     }),
