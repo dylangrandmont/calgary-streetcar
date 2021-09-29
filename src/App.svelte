@@ -89,7 +89,7 @@
   $: trackIndex = routes.findIndex(({ id }) => id === selectedId)
   $: {
     if (selectedId && allowSound) {
-      const sound = new Audio('/Tram-bell-sound-effect.mp3')
+      const sound = new Audio('./Tram-bell-sound-effect.mp3')
       sound.volume = 0.05;
       sound.play();
     }
