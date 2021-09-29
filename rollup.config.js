@@ -148,7 +148,7 @@ export default {
     format: 'iife',
     name: 'app',
     dir: 'public/build',
-    entryFileNames: '[name]-[hash].js'
+    entryFileNames: production? '[name]-[hash].js' : '[name].js'
   },
   plugins: [
     svelte({
