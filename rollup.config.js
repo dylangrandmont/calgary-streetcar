@@ -51,6 +51,14 @@ const htmlOptions = {
 	<meta name='viewport' content='width=device-width,initial-scale=1'>
 	<meta name="description" content="Interactive visualization of Calgary Municipal Railway including map and history">
 
+	<meta name="twitter:card" content="Calgary's Streetcar Network" />
+	<meta name="twitter:site" content="@dylan_grandmont" />
+	<meta name="twitter:creator" content="@dylan_grandmont" />
+	<meta property="og:url" content="https://dylangrandmont.github.io/calgary-streetcar/" />
+	<meta property="og:title" content="Calgary's Streetcar Network" />
+	<meta property="og:description" content="Calgary's streetcar network was first constructed in 1909 and continued operation for over four decades. The map shown here represents the network as it existed in 1945." />
+	<meta property="og:image" content="https://dylangrandmont.github.io/calgary-streetcar/car.jpeg" />
+
 	<title>Calgary Streetcar Network</title>
 
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet" />
