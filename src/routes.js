@@ -171,23 +171,6 @@ const crescentHeights = route([
   [-114.08489350460921, 51.066904001348]
 ])
 
-const mountPleasant = route([
-  intersections['20 Av N']['7 St NW'],
-  intersections['20 Av N']['Center St'],
-  intersections['8 Av S']['Center St'],
-  intersections['8 Av S']['1 St SW'],
-  intersections['12 Av S']['1 St SW'],
-  [-114.07156268197173, 51.041667315481085],
-  [-114.07151627155552, 51.02970016087958],
-  [-114.07314144774193, 51.02963947142243],
-  [-114.0755837013509, 51.02889675928498],
-  [-114.0781177043355, 51.02739885277752],
-  [-114.07846226790436, 51.02707203118832],
-  [-114.07883916075279, 51.02612382969992],
-  [-114.07791852502602, 51.023378286034514],
-  [-114.0778335229034, 51.01850581066723]
-])
-
 const toElbowPark = [
   intersections['8 Av S']['Center St'],
   intersections['8 Av S']['1 St SW'],
@@ -201,8 +184,17 @@ const toElbowPark = [
   [-114.07883916075279, 51.02612382969992],
   [-114.07791852502602, 51.023378286034514],
   [-114.0778335229034, 51.01850581066723]
-
 ]
+
+const mountPleasant = route([
+  intersections['20 Av N']['7 St NW'],
+  intersections['20 Av N']['Center St'],
+  ...toElbowPark,
+  ...[...toElbowPark].reverse(),
+  intersections['20 Av N']['Center St'],
+  intersections['20 Av N']['7 St NW'],
+])
+
 const tuxedoPark = route([
   intersections['31 Av N']['Center St'],
   intersections['23 Av N']['Center St'],
