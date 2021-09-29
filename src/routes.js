@@ -60,18 +60,7 @@ const sunnysideRamsay = route([
   [-114.04119794256063, 51.036274899551046]
 ])
 
-const riversideManchester = route([
-  [-114.03245254193595, 51.0532361007371],
-  [-114.05027216576363, 51.05327391988086],
-  [-114.05037125129785, 51.050621738210474],
-  [-114.05154533464692, 51.04891295247008],
-  [-114.05294643069912, 51.04800145363462],
-  [-114.0530456818646, 51.04758695979581],
-  intersections['8 Av S']['4 St SE'],
-  intersections['8 Av S']['1 St SW'],
-  intersections['12 Av S']['1 St SW'],
-  intersections['12 Av S']['2 St SE'],
-  intersections['17 Av S']['2 St SE'],
+const southManchester = [
   [-114.05891505161102, 51.0350793399651],
   [-114.05947295099163, 51.03361864160707],
   [-114.05956748319745, 51.028709978619666],
@@ -83,6 +72,32 @@ const riversideManchester = route([
   [-114.06779864140104, 51.00859304219302],
   [-114.06771817513604, 51.008680800229925],
   [-114.06776913710388, 51.008873192268275]
+
+]
+const riversideManchester = route([
+  intersections['1 Av N']['12A St NE'],
+  intersections['1 Av N']['Edmonton Trail NE'],
+  intersections['Memorial Dr']['Edmonton Trail NE'],
+  intersections['Riverfront Av S']['Edmonton Trail NE'],
+  intersections['5 Av S']['4St SE'],
+  intersections['8 Av S']['4 St SE'],
+  intersections['8 Av S']['1 St SW'],
+  intersections['12 Av S']['1 St SW'],
+  intersections['12 Av S']['2 St SE'],
+  intersections['17 Av S']['2 St SE'],
+  ...southManchester,
+  ...[...southManchester].reverse(),
+  intersections['17 Av S']['2 St SE'],
+  intersections['12 Av S']['2 St SE'],
+  intersections['12 Av S']['1 St SW'],
+  intersections['8 Av S']['1 St SW'],
+  intersections['8 Av S']['4 St SE'],
+  intersections['5 Av S']['4St SE'],
+  intersections['Riverfront Av S']['Edmonton Trail NE'],
+  intersections['Memorial Dr']['Edmonton Trail NE'],
+  intersections['1 Av N']['Edmonton Trail NE'],
+  intersections['1 Av N']['12A St NE'],
+
 ])
 
 const southCalgary = route([
