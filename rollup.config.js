@@ -51,7 +51,7 @@ const htmlOptions = {
 	<meta name='viewport' content='width=device-width,initial-scale=1'>
 	<meta name="description" content="Interactive visualization of Calgary Municipal Railway including map and history">
 
-	<meta name="twitter:card" content="Calgary's Streetcar Network" />
+	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@dylan_grandmont" />
 	<meta name="twitter:creator" content="@dylan_grandmont" />
 	<meta property="og:url" content="https://dylangrandmont.github.io/calgary-streetcar/" />
