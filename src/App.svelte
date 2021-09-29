@@ -191,7 +191,8 @@
 </div>
 
 <style>
-  .root {
+
+.root {
     position: absolute;
     z-index: 1;
     flex-wrap: nowrap;

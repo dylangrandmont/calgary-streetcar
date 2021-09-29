@@ -27,9 +27,6 @@
             Car Icon Size
             <input type="range" min=10 max=100 bind:value={iconSize}>
             Legend
-            <label class="checkbox">
-                <input type="checkbox" />
-                <span></span>
-            </label>
+            <input type="checkbox" bind:checked={showLegend}/>
         </div>
 </div>
