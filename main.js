@@ -2314,9 +2314,9 @@ var app = (function () {
     			t4 = space();
     			if (if_block1) if_block1.c();
     			attr_dev(b, "class", "title svelte-qmh8x9");
-    			add_location(b, file, 189, 2, 4973);
+    			add_location(b, file, 189, 2, 4974);
     			attr_dev(div, "class", "root hidden svelte-qmh8x9");
-    			add_location(div, file, 187, 0, 4899);
+    			add_location(div, file, 187, 0, 4900);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2457,7 +2457,7 @@ var app = (function () {
     	let trackIndex;
     	let shouldTrackCamera;
     	let showLegend = true;
-    	let allowSound = true;
+    	let allowSound = false;
     	const defaultCenter = [-114.06, 51.05];
     	mapboxgl.accessToken = 'pk.eyJ1IjoiZHlsYW5ncmFuZG1vbnQiLCJhIjoiY2t0eDV1cmdkMnBxbzJ3bzI5dm1wbHZ4MCJ9.19ogLLAZwVYbKNoy-E_S5Q';
 
