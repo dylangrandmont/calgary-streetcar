@@ -27,6 +27,6 @@
       This visualization was inspired by <a href="https://saadiqm.com/2019/04/13/calgary-historic-streetcar-map.html">Saadiq Mohiuddin's blog post of the Municipal Railway</a>.
     </p>
     <p>
-      If you have feedback or want to make a contribution, you can reach me by <a href="https://github.com/dylangrandmont/calgary-streetcar/issues">leaving an issue on github</a> or by <a href="https://twitter.com/dylan_grandmont">tweeting at me</a>.
+      If you have feedback or want to make a contribution, you can reach me by <a href="https://github.com/dylangrandmont/calgary-streetcar/issues">leaving an issue or pull request on github</a> or by <a href="https://twitter.com/dylan_grandmont">tweeting at me</a>.
     </p>
 </div>
